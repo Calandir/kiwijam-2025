@@ -1,18 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr1ylkx425la3"]
+[gd_scene load_steps=5 format=3 uid="uid://xto32kijwviv"]
 
-[ext_resource type="PackedScene" uid="uid://bpiieteqlavqw" path="res://Scenes/bubble.tscn" id="1_2kg1s"]
+[ext_resource type="PackedScene" uid="uid://c1x26w3qouwwn" path="res://Scenes/bubble.tscn" id="1_2kg1s"]
+[ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
-radius = 0.5
+radius = 306.163
 
 [sub_resource type="SphereMesh" id="SphereMesh_uj1bi"]
 
 [node name="SceneRoot" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
 
 [node name="Center" type="Node2D" parent="."]
-scale = Vector2(100, 100)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Center"]
 
@@ -22,5 +23,8 @@ shape = SubResource("CircleShape2D_uj1bi")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Center"]
 mesh = SubResource("SphereMesh_uj1bi")
 
+[node name="Sprite2D" type="Sprite2D" parent="Center"]
+texture = ExtResource("1_fj1i6")
+
 [node name="Bubble" parent="." instance=ExtResource("1_2kg1s")]
-position = Vector2(59, -92)
+position = Vector2(315, -376)
