@@ -27,4 +27,4 @@ mesh = SubResource("SphereMesh_uj1bi")
 texture = ExtResource("1_fj1i6")
 
 [node name="Bubble" parent="." instance=ExtResource("1_2kg1s")]
-position = Vector2(-3, -503)
+position = Vector2(381, -503)

@@ -7,9 +7,12 @@
 radius = 41.0122
 
 [node name="RigidBody2D" type="RigidBody2D"]
+mass = 3.0
+gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_amq2t")
+our_gravity_scale = 0.05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uj1bi")
