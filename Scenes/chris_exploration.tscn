@@ -15,9 +15,9 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="Center" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Center"]
+[node name="Area2D" type="StaticBody2D" parent="Center"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Center/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Area2D"]
 shape = SubResource("CircleShape2D_uj1bi")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Center"]
@@ -27,4 +27,4 @@ mesh = SubResource("SphereMesh_uj1bi")
 texture = ExtResource("1_fj1i6")
 
 [node name="Bubble" parent="." instance=ExtResource("1_2kg1s")]
-position = Vector2(315, -376)
+position = Vector2(-3, -503)
