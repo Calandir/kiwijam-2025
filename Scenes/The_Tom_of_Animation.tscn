@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbmd51mp4x517"]
+[gd_scene load_steps=17 format=3 uid="uid://ble3xrfucqi74"]
 
 [ext_resource type="Shader" uid="uid://ccu7x2keeeta8" path="res://Shaders/Fire_Shader.tres" id="1_qmgqy"]
 [ext_resource type="Texture2D" uid="uid://b4tvepgja7j5s" path="res://Art/Textures/T_Gradient_circle22.jpg" id="2_eiarl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3lkpaidjverf" path="res://Art/Textures/T_1_pixel.jpg" id="4_lsxrt"]
 [ext_resource type="Texture2D" uid="uid://ds6nnyk5gb58b" path="res://Art/orb2.png" id="5_g704t"]
 [ext_resource type="Texture2D" uid="uid://ua838vr88q0c" path="res://Art/orb4.png" id="6_eiarl"]
+[ext_resource type="Shader" uid="uid://bodh0yi4jwc37" path="res://Shaders/Elec_Shader.tres" id="6_p2krx"]
 
 [sub_resource type="Gradient" id="Gradient_r773y"]
 
@@ -36,6 +37,11 @@ shader_parameter/Fire_Shape = ExtResource("2_eiarl")
 shader_parameter/Top_Fade = SubResource("GradientTexture2D_8aucf")
 shader_parameter/Colour = SubResource("GradientTexture1D_jpwe8")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsxrt"]
+shader = ExtResource("6_p2krx")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g704t"]
+
 [node name="TomAnimation" type="Node2D"]
 
 [node name="Fire_Sprite" type="Sprite2D" parent="."]
@@ -48,7 +54,11 @@ texture = ExtResource("4_lsxrt")
 position = Vector2(133, 16)
 texture = ExtResource("5_g704t")
 
-[node name="Elec_Sprite" type="Sprite2D" parent="."]
+[node name="Elec_Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_lsxrt")
+position = Vector2(-93, 6)
+scale = Vector2(0.104333, 0.104333)
+sprite_frames = SubResource("SpriteFrames_g704t")
 
 [node name="Elec_Orb" type="Sprite2D" parent="."]
 position = Vector2(-93, 4)
