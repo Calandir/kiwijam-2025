@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://xto32kijwviv"]
+[gd_scene load_steps=6 format=3 uid="uid://xto32kijwviv"]
 
 [ext_resource type="PackedScene" uid="uid://c1x26w3qouwwn" path="res://Scenes/bubble.tscn" id="1_2kg1s"]
+[ext_resource type="Script" uid="uid://qoh4uiogmk5j" path="res://Scripts/debug_input_listener.gd" id="1_efcda"]
 [ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
@@ -12,6 +13,11 @@ radius = 306.163
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+
+[node name="DebugInputListener" type="Node" parent="." node_paths=PackedStringArray("_spawn_container")]
+script = ExtResource("1_efcda")
+_spawn_template = ExtResource("1_2kg1s")
+_spawn_container = NodePath("..")
 
 [node name="Center" type="Node2D" parent="."]
 
