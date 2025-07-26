@@ -38,13 +38,29 @@ func on_collision(body: Node):
 		# call_deferred() required to freeze physics at end of frame
 		(func(): self.set_state(BubbleState.Stuck)).call_deferred()
 		
-		var neighbors = _connectionHitbox.get_overlapping_bodies()
-		neighbors = neighbors.filter(func(x): return (x != self) and (x as Bubble) != null)
+		var bubble_matches = {}
+		search_all_from_neighbors(bubble_matches)
 		
-		if len(neighbors) < 2:
+		if len(bubble_matches) < 3:
 			return
 		
-		for neighbor in neighbors:
-			neighbor.queue_free()
+		for bubble_match in bubble_matches:
+			bubble_match.queue_free()
 		
 		self.queue_free()
+
+# Using dict as set because no Set type
+func search_all_from_neighbors(found_nodes: Dictionary):
+	found_nodes[self] = ""  # dummy value
+	
+	var neighbors = _get_bubble_neighbors()
+	
+	for neighbor in neighbors:
+		if not found_nodes.has(neighbor):
+			found_nodes[neighbor] = ""  # dummy value
+			neighbor.search_all_from_neighbors(found_nodes)
+
+func _get_bubble_neighbors():
+	var neighbors = _connectionHitbox.get_overlapping_bodies()
+	
+	return neighbors.filter(func(x): return (x != self) and (x as Bubble) != null)
