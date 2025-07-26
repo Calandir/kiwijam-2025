@@ -13,7 +13,7 @@ var _currentState: BubbleState
 func _ready():
 	body_entered.connect(on_collision)
 	
-	set_state(BubbleState.Falling)
+	set_state(BubbleState.Falling, null)
 
 func _process(delta):
 	# Center is 0, 0
@@ -22,45 +22,85 @@ func _process(delta):
 	if _currentState == BubbleState.Falling:
 		add_constant_force(vector_to_center * our_gravity_scale)
 
-func set_state(state: BubbleState):
+func set_state(state: BubbleState, new_parent: Node2D):
+	var previous_state: BubbleState = _currentState
 	_currentState = state
+	
+	var test = get_tree().current_scene
 	
 	match state:
 		BubbleState.Stuck:
-			reparent(get_tree().current_scene.find_child("Center"))
+			reparent(new_parent)
 			freeze = true
+		BubbleState.Falling:
+			if previous_state == BubbleState.Stuck:
+				reparent(new_parent)
+				freeze = false
 
 func on_collision(body: Node):
+	if _currentState == BubbleState.Stuck:
+		return
+	
 	var has_hit_center = body is StaticBody2D
 	var has_hit_stuck_bubble = body is Bubble and body._currentState == BubbleState.Stuck
 	
 	if has_hit_center or has_hit_stuck_bubble:
 		# call_deferred() required to freeze physics at end of frame
-		(func(): self.set_state(BubbleState.Stuck)).call_deferred()
+		(func(): self.set_state(BubbleState.Stuck, body)).call_deferred()
 		
-		var bubble_matches = {}
-		search_all_from_neighbors(bubble_matches, func(bubble):return bubble.type == self.type)
+		var matching_neighbors = _get_bubble_matching_neighbors()
 		
-		if len(bubble_matches) < 3:
+		var all_connected: Array[Bubble] = matching_neighbors.duplicate()
+		var all_matches: Array[Bubble] = matching_neighbors.duplicate()
+		all_matches.append(self)
+		
+		for x in matching_neighbors:
+			x._add_deeper_connections(all_connected, func(bubble): return true)
+			x._add_deeper_connections(all_matches, func(bubble): return bubble.type == self.type)
+		
+		if len(all_matches) < 3:
 			return
 		
-		for bubble_match in bubble_matches:
-			bubble_match.queue_free()
-		
-		self.queue_free()
+		var orphaned = all_connected.filter(func(x): return not all_matches.has(x))
+		for orphan: Bubble in orphaned:
+			(func(): orphan.set_state(BubbleState.Falling, get_tree().current_scene)).call_deferred()
+			
+		for x in all_matches:
+			x.queue_free()
 
-# Using dict as set because no Set type
-func search_all_from_neighbors(found_nodes: Dictionary, is_valid_func: Callable):
-	found_nodes[self] = ""  # dummy value
-	
-	var neighbors = _get_bubble_neighbors()
-	
-	for neighbor in neighbors:
-		if not found_nodes.has(neighbor) and is_valid_func.call(neighbor):
-			found_nodes[neighbor] = ""  # dummy value
-			neighbor.search_all_from_neighbors(found_nodes, is_valid_func)
-
-func _get_bubble_neighbors():
+func _get_bubble_matching_neighbors() -> Array[Bubble]:
 	var neighbors = _connectionHitbox.get_overlapping_bodies()
 	
-	return neighbors.filter(func(x): return (x != self) and (x as Bubble) != null)
+	var results: Array[Bubble] = []
+	
+	for neighbor in neighbors:
+		if neighbor == self:
+			continue
+		
+		var as_bubble = neighbor as Bubble
+		if as_bubble == null or as_bubble.type != self.type:
+			continue
+		
+		results.append(neighbor)
+	
+	return results
+
+func _add_deeper_connections(already_matched: Array[Bubble], is_valid_check: Callable):
+	if not already_matched.has(self):
+		already_matched.append(self)
+	
+	var bubble_children = get_children().filter(func(x): return x as Bubble != null)
+	
+	for bubble in bubble_children:
+		if not is_valid_check.call(bubble):
+			continue
+		
+		if not already_matched.has(bubble):
+			already_matched.append(bubble)
+			bubble._add_deeper_connections(already_matched, is_valid_check)
+	
+	var parent = get_parent()
+	var parent_as_bubble = parent as Bubble
+	if parent_as_bubble != null and (not already_matched.has(parent)) and is_valid_check.call(parent_as_bubble):
+		already_matched.append(parent)
+		parent._add_deeper_connections(already_matched, is_valid_check)
