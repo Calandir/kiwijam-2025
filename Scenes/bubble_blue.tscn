@@ -15,6 +15,7 @@ gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_irr6a")
+type = 1
 our_gravity_scale = 0.05
 _connectionHitbox = NodePath("LargerArea2D")
 
