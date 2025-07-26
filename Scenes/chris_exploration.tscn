@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://xto32kijwviv"]
+[gd_scene load_steps=11 format=3 uid="uid://xto32kijwviv"]
 
 [ext_resource type="Script" uid="uid://dc1bhhjiyn1fs" path="res://Scripts/game_state.gd" id="1_essuw"]
 [ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dew32pop3u3px" path="res://Scenes/fullscreen_background.tscn" id="5_r36mj"]
 [ext_resource type="PackedScene" uid="uid://dca4rv7jce6xg" path="res://Scenes/overflow_border.tscn" id="6_uj86v"]
 [ext_resource type="PackedScene" uid="uid://f5nub281btef" path="res://Scenes/game_over_root.tscn" id="7_uj86v"]
-[ext_resource type="PackedScene" uid="uid://cfa5sk8a30v3b" path="res://Scenes/debug_input_listener.tscn" id="8_essuw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 306.163
@@ -53,6 +52,3 @@ parameters/looping = true
 
 [node name="GameOverRoot" parent="." node_paths=PackedStringArray("game_state") instance=ExtResource("7_uj86v")]
 game_state = NodePath("../GameState")
-
-[node name="DebugInputListener" parent="." node_paths=PackedStringArray("_spawn_container") instance=ExtResource("8_essuw")]
-_spawn_container = NodePath("..")
