@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://xto32kijwviv"]
+[gd_scene load_steps=8 format=3 uid="uid://xto32kijwviv"]
 
 [ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
 [ext_resource type="Script" uid="uid://b7wk0a8fnql6j" path="res://Scripts/spinondrag.gd" id="3_r36mj"]
 [ext_resource type="AudioStream" uid="uid://dmlis47shos5t" path="res://Audio/bgm.ogg" id="4_r36mj"]
 [ext_resource type="Script" uid="uid://bym5itbp8q83f" path="res://Scripts/spawner.gd" id="4_y1jy2"]
+[ext_resource type="PackedScene" path="res://Scenes/fullscreen_background.tscn" id="5_r36mj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 306.163
@@ -37,3 +38,5 @@ radius = 1000.0
 stream = ExtResource("4_r36mj")
 autoplay = true
 parameters/looping = true
+
+[node name="FullscreenBackground" parent="." instance=ExtResource("5_r36mj")]
