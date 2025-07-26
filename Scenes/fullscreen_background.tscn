@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dew32pop3u3px"]
+
+[ext_resource type="Texture2D" uid="uid://dib5sldoon5nn" path="res://Art/background.png" id="1_youmj"]
+
+[node name="FullscreenBackground" type="CanvasLayer"]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_youmj")
+expand_mode = 2
