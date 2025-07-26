@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfa5sk8a30v3b"]
+
+[ext_resource type="Script" uid="uid://qoh4uiogmk5j" path="res://Scripts/debug_input_listener.gd" id="1_ol5gq"]
+[ext_resource type="PackedScene" uid="uid://dsfk1dptno0a7" path="res://Scenes/bubble_red.tscn" id="2_2mhth"]
+[ext_resource type="PackedScene" uid="uid://vudpsltxfds" path="res://Scenes/bubble_blue.tscn" id="3_hei6d"]
+
+[node name="DebugInputListener" type="Node2D"]
+script = ExtResource("1_ol5gq")
+_spawn_template_red = ExtResource("2_2mhth")
+_spawn_template_blue = ExtResource("3_hei6d")
