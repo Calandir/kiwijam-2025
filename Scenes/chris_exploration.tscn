@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://xto32kijwviv"]
+[gd_scene load_steps=12 format=3 uid="uid://xto32kijwviv"]
 
 [ext_resource type="Script" path="res://Scripts/game_state.gd" id="1_essuw"]
 [ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
 [ext_resource type="Script" uid="uid://b7wk0a8fnql6j" path="res://Scripts/spinondrag.gd" id="3_r36mj"]
 [ext_resource type="AudioStream" uid="uid://dmlis47shos5t" path="res://Audio/bgm.ogg" id="4_r36mj"]
 [ext_resource type="Script" uid="uid://bym5itbp8q83f" path="res://Scripts/spawner.gd" id="4_y1jy2"]
-[ext_resource type="PackedScene" path="res://Scenes/fullscreen_background.tscn" id="5_r36mj"]
+[ext_resource type="PackedScene" uid="uid://dew32pop3u3px" path="res://Scenes/fullscreen_background.tscn" id="5_r36mj"]
 [ext_resource type="PackedScene" uid="uid://ccmcv64tkxgkh" path="res://Scenes/overflow_border.tscn" id="6_uj86v"]
 [ext_resource type="PackedScene" uid="uid://k5vvnewcxddd" path="res://Scenes/game_over_root.tscn" id="7_uj86v"]
+[ext_resource type="PackedScene" uid="uid://b8jfnc0klgfw4" path="res://Scenes/sfx_player.tscn" id="9_5i8yc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 306.163
@@ -53,3 +54,5 @@ parameters/looping = true
 
 [node name="GameOverRoot" parent="." node_paths=PackedStringArray("game_state") instance=ExtResource("7_uj86v")]
 game_state = NodePath("../GameState")
+
+[node name="SFXPlayer" parent="." instance=ExtResource("9_5i8yc")]
