@@ -5,7 +5,7 @@ extends RigidBody2D
 @export var our_gravity_scale: float = 0.1;
 @export var _connectionHitbox: Area2D;
 
-enum BubbleType { Red, Blue }
+enum BubbleType { Red = 1, Blue = 2 }
 enum BubbleState { Falling, Stuck }
 
 var _currentState: BubbleState
