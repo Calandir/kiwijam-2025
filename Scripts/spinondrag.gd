@@ -1,7 +1,7 @@
 extends Node2D
 
 var dragging := false
-@export var max_rotation_speed := 4.25  # radians per second
+@export var max_rotation_speed := 3  # radians per second
 @export var smoothing := 10.0  # higher means faster smoothing
 
 func _unhandled_input(event: InputEvent) -> void:
