@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmkqbwkr7kd8e"]
+[gd_scene load_steps=9 format=3 uid="uid://bmkqbwkr7kd8e"]
 
 [ext_resource type="Texture2D" uid="uid://dib5sldoon5nn" path="res://Art/background.png" id="1_s82d0"]
 [ext_resource type="Texture2D" uid="uid://cafqmaaaaot2n" path="res://Art/player0.png" id="2_2ppl1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bvqpyjs4hk1np" path="res://Art/button_instructions.png" id="5_nny74"]
 [ext_resource type="Texture2D" uid="uid://cjlwy7m46ek65" path="res://Art/button_credits.png" id="6_ogfep"]
 [ext_resource type="Texture2D" uid="uid://b7tyd8vaw2bo0" path="res://Art/title.png" id="7_7wn6m"]
+[ext_resource type="AudioStream" uid="uid://d2keitfm22wlb" path="res://Audio/title.ogg" id="8_2ppl1"]
 
 [node name="TashMenu" type="Node2D"]
 
@@ -61,5 +62,10 @@ texture = ExtResource("6_ogfep")
 [node name="Title" type="Sprite2D" parent="."]
 position = Vector2(532, 365.5)
 texture = ExtResource("7_7wn6m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_2ppl1")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="ButtonStart/Button" to="Player0" method="_on_button_pressed"]
