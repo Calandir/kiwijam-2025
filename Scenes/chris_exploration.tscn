@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://xto32kijwviv"]
+[gd_scene load_steps=7 format=3 uid="uid://xto32kijwviv"]
 
 [ext_resource type="PackedScene" uid="uid://c1x26w3qouwwn" path="res://Scenes/bubble.tscn" id="1_2kg1s"]
 [ext_resource type="Script" uid="uid://qoh4uiogmk5j" path="res://Scripts/debug_input_listener.gd" id="1_efcda"]
 [ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
+[ext_resource type="Script" uid="uid://bym5itbp8q83f" path="res://Scripts/spawner.gd" id="4_y1jy2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 306.163
@@ -34,3 +35,8 @@ texture = ExtResource("1_fj1i6")
 
 [node name="Bubble" parent="." instance=ExtResource("1_2kg1s")]
 position = Vector2(381, -503)
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("4_y1jy2")
+prefab = ExtResource("1_2kg1s")
+radius = 1000.0
