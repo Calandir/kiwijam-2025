@@ -3,6 +3,7 @@ extends Node2D
 @export var radius: float = 200.0
 @export var min_delay: float = 1.0
 @export var max_delay: float = 3.0
+@export var game_state: GameState
 
 # List of dictionaries: each with 'scene' (PackedScene) and 'weight' (float)
 var prefab_weights := [
@@ -17,7 +18,9 @@ func spawn_loop() -> void:
 	spawn_prefab()
 	var wait_time = randf_range(min_delay, max_delay)
 	await get_tree().create_timer(wait_time).timeout
-	spawn_loop()
+	
+	if not game_state.is_game_over:
+		spawn_loop()
 
 func spawn_prefab():
 	var prefab = pick_weighted_prefab()
