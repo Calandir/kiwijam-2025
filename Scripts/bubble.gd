@@ -9,11 +9,9 @@ enum BubbleType { Red, Blue }
 enum BubbleState { Falling, Stuck }
 
 var _currentState: BubbleState
-var _overflowBorder: Area2D
 
 func _ready():
 	body_entered.connect(on_collision)
-	_overflowBorder = get_tree().current_scene.find_child("OverflowBorder", true)
 	
 	set_state(BubbleState.Falling, null)
 
@@ -34,10 +32,6 @@ func set_state(state: BubbleState, new_parent: Node2D):
 		BubbleState.Stuck:
 			reparent(new_parent)
 			freeze = true
-			
-			var is_game_over: bool = not _overflowBorder.overlaps_body(self)
-			if is_game_over:
-				get_tree().current_scene.find_child("GameState", true).set_game_over()
 		BubbleState.Falling:
 			if previous_state == BubbleState.Stuck:
 				reparent(new_parent)

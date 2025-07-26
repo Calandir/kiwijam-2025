@@ -3,7 +3,6 @@ extends Node2D
 var dragging := false
 @export var max_rotation_speed := 3  # radians per second
 @export var smoothing := 10.0  # higher means faster smoothing
-@export var game_state: GameState
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -13,10 +12,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		dragging = event.pressed
 
 func _process(delta):
-	if game_state.is_game_over:
-		dragging = false
-		return
-	
 	if dragging:
 		var pointer_pos = get_global_mouse_position()
 		var target_angle = (pointer_pos - global_position).angle() + deg_to_rad(90)
