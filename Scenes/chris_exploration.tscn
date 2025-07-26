@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://xto32kijwviv"]
+[gd_scene load_steps=10 format=3 uid="uid://xto32kijwviv"]
 
 [ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
 [ext_resource type="Script" uid="uid://b7wk0a8fnql6j" path="res://Scripts/spinondrag.gd" id="3_r36mj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bym5itbp8q83f" path="res://Scripts/spawner.gd" id="4_y1jy2"]
 [ext_resource type="PackedScene" path="res://Scenes/fullscreen_background.tscn" id="5_r36mj"]
 [ext_resource type="PackedScene" uid="uid://dca4rv7jce6xg" path="res://Scenes/overflow_border.tscn" id="6_uj86v"]
+[ext_resource type="PackedScene" uid="uid://f5nub281btef" path="res://Scenes/game_over_root.tscn" id="7_uj86v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 306.163
@@ -43,3 +44,6 @@ parameters/looping = true
 [node name="FullscreenBackground" parent="." instance=ExtResource("5_r36mj")]
 
 [node name="OverflowBorder" parent="." instance=ExtResource("6_uj86v")]
+
+[node name="GameOverRoot" parent="." instance=ExtResource("7_uj86v")]
+visible = false
