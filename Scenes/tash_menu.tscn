@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmkqbwkr7kd8e"]
+
+[ext_resource type="Texture2D" uid="uid://dib5sldoon5nn" path="res://Art/background.png" id="1_s82d0"]
+[ext_resource type="Texture2D" uid="uid://cafqmaaaaot2n" path="res://Art/player0.png" id="2_2ppl1"]
+[ext_resource type="Script" uid="uid://brhlqt23n0wmn" path="res://Scenes/player_0.gd" id="3_ehope"]
+[ext_resource type="Texture2D" uid="uid://b30i3ho3fc22c" path="res://Art/button_start.png" id="4_ubx1x"]
+[ext_resource type="Texture2D" uid="uid://bvqpyjs4hk1np" path="res://Art/button_instructions.png" id="5_nny74"]
+[ext_resource type="Texture2D" uid="uid://cjlwy7m46ek65" path="res://Art/button_credits.png" id="6_ogfep"]
+[ext_resource type="Texture2D" uid="uid://b7tyd8vaw2bo0" path="res://Art/title.png" id="7_7wn6m"]
+
+[node name="TashMenu" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -500
+position = Vector2(867, 598)
+texture = ExtResource("1_s82d0")
+
+[node name="Player0" type="Sprite2D" parent="."]
+modulate = Color(0.494356, 0.322826, 1.92523e-07, 1)
+position = Vector2(799, 666)
+rotation = -1.5708
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_2ppl1")
+script = ExtResource("3_ehope")
+
+[node name="SparkParticles" type="CPUParticles2D" parent="Player0"]
+z_index = -1
+position = Vector2(-2.85714, -2.85713)
+rotation = 1.5708
+scale = Vector2(1.42857, 1.42857)
+amount = 50
+lifetime = 3.0
+direction = Vector2(50, -50)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+angle_min = -5.0
+angle_max = 5.0
+scale_amount_max = 3.0
+
+[node name="ButtonStart" type="Sprite2D" parent="."]
+position = Vector2(411, 521.5)
+texture = ExtResource("4_ubx1x")
+
+[node name="Button" type="Button" parent="ButtonStart"]
+offset_left = -174.0
+offset_top = -33.0
+offset_right = 181.0
+offset_bottom = 36.0
+flat = true
+
+[node name="ButtonInstructions" type="Sprite2D" parent="."]
+position = Vector2(355, 629.5)
+texture = ExtResource("5_nny74")
+
+[node name="ButtonCredits" type="Sprite2D" parent="."]
+position = Vector2(387, 727.5)
+texture = ExtResource("6_ogfep")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(532, 365.5)
+texture = ExtResource("7_7wn6m")
+
+[connection signal="pressed" from="ButtonStart/Button" to="Player0" method="_on_button_pressed"]
