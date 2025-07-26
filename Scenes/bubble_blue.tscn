@@ -22,6 +22,7 @@ _connectionHitbox = NodePath("LargerArea2D")
 shape = SubResource("CircleShape2D_uj1bi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
 texture = ExtResource("2_o7gho")
 
 [node name="LargerArea2D" type="Area2D" parent="."]
