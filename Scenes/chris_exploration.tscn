@@ -14,7 +14,7 @@ radius = 306.163
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 
-[node name="DebugInputListener" type="Node" parent="." node_paths=PackedStringArray("_spawn_container")]
+[node name="DebugInputListener" type="Node2D" parent="." node_paths=PackedStringArray("_spawn_container")]
 script = ExtResource("1_efcda")
 _spawn_template = ExtResource("1_2kg1s")
 _spawn_container = NodePath("..")
