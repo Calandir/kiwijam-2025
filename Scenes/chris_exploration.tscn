@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://xto32kijwviv"]
 
-[ext_resource type="Script" path="res://Scripts/game_state.gd" id="1_essuw"]
+[ext_resource type="Script" uid="uid://dc1bhhjiyn1fs" path="res://Scripts/game_state.gd" id="1_essuw"]
 [ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
 [ext_resource type="Script" uid="uid://b7wk0a8fnql6j" path="res://Scripts/spinondrag.gd" id="3_r36mj"]
 [ext_resource type="AudioStream" uid="uid://dmlis47shos5t" path="res://Audio/bgm.ogg" id="4_r36mj"]

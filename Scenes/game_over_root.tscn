@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://k5vvnewcxddd"]
 
-[ext_resource type="Script" path="res://Scenes/game_over_root.gd" id="1_1015q"]
+[ext_resource type="Script" uid="uid://vv64x3p4awjn" path="res://Scenes/game_over_root.gd" id="1_1015q"]
 [ext_resource type="Texture2D" uid="uid://bis77mx72joyq" path="res://Art/game_over.png" id="2_hul7l"]
 
 [node name="GameOverRoot" type="Node2D" node_paths=PackedStringArray("canvas")]
