@@ -18,10 +18,12 @@ enum BubbleState { Falling, Stuck }
 
 var _currentState: BubbleState
 var _overflowBorder: Area2D
+var _sfxPlayer: Node
 
 func _ready():
 	body_entered.connect(on_collision)
 	_overflowBorder = get_tree().current_scene.find_child("OverflowBorder", true)
+	_sfxPlayer = get_tree().current_scene.find_child("SFXPlayer", true)
 	
 	set_state(BubbleState.Falling, null)
 
@@ -73,8 +75,14 @@ func on_collision(body: Node):
 			x._add_deeper_connections(all_matches, func(bubble): return bubble.type == self.type)
 		
 		if len(all_matches) < 3:
+			if has_hit_center and len(all_matches) == 1:
+				_sfxPlayer.play_miss_sfx()
+			else:
+				_sfxPlayer.play_connect_sfx()
 			return
 		
+		_sfxPlayer.play_spell_sfx()
+
 		var orphaned = all_connected.filter(func(x): return not all_matches.has(x))
 		for orphan: Bubble in orphaned:
 			(func(): orphan.set_state(BubbleState.Falling, get_tree().current_scene)).call_deferred()
