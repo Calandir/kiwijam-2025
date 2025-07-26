@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://psjdht47j6ot"]
+
+[ext_resource type="Script" uid="uid://bmlo3ptwa7wp8" path="res://Scripts/bubble.gd" id="1_l623x"]
+[ext_resource type="Texture2D" uid="uid://ds6nnyk5gb58b" path="res://Art/orb2.png" id="2_2bjgc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amq2t"]
+radius = 60.0
+
+[node name="RigidBody2D" type="RigidBody2D" node_paths=PackedStringArray("_connectionHitbox")]
+mass = 3.0
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_l623x")
+type = 6
+our_gravity_scale = 0.05
+_connectionHitbox = NodePath("LargerArea2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uj1bi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+texture = ExtResource("2_2bjgc")
+
+[node name="LargerArea2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LargerArea2D"]
+shape = SubResource("CircleShape2D_amq2t")
