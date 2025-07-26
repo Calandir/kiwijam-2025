@@ -1,3 +1,4 @@
+class_name Bubble
 extends RigidBody2D
 
 @export var our_gravity_scale: float = 0.1;
@@ -23,8 +24,12 @@ func set_state(state: BubbleState):
 	
 	match state:
 		BubbleState.Stuck:
-			set_constant_force(Vector2.ZERO)
-			set_constant_torque(0)
+			freeze = true
 
 func on_collision(body: Node):
-	set_state(BubbleState.Stuck)
+	var has_hit_center = body is StaticBody2D
+	var has_hit_stuck_bubble = body is Bubble and body._currentState == BubbleState.Stuck
+	
+	if has_hit_center or has_hit_stuck_bubble:
+		# call_deferred() required to freeze physics at end of frame
+		(func(): self.set_state(BubbleState.Stuck)).call_deferred()
