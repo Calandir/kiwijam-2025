@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://k5vvnewcxddd"]
+[gd_scene load_steps=3 format=3 uid="uid://k5vvnewcxddd"]
 
-[ext_resource type="Script" path="res://Scenes/game_over_root.gd" id="1_1015q"]
+[ext_resource type="Script" uid="uid://vv64x3p4awjn" path="res://Scenes/game_over_root.gd" id="1_1015q"]
+[ext_resource type="Texture2D" uid="uid://bis77mx72joyq" path="res://Art/game_over.png" id="2_hul7l"]
 
 [node name="GameOverRoot" type="Node2D" node_paths=PackedStringArray("canvas")]
 script = ExtResource("1_1015q")
@@ -16,16 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameOverLabel" type="Label" parent="CanvasLayer/Scaler"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.3
-anchor_right = 1.0
-anchor_bottom = 0.3
-offset_top = -11.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-text = "Game over!"
-horizontal_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Scaler"]
+position = Vector2(595, 350)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_hul7l")
