@@ -39,7 +39,7 @@ func on_collision(body: Node):
 		(func(): self.set_state(BubbleState.Stuck)).call_deferred()
 		
 		var bubble_matches = {}
-		search_all_from_neighbors(bubble_matches)
+		search_all_from_neighbors(bubble_matches, func(bubble):return bubble.type == self.type)
 		
 		if len(bubble_matches) < 3:
 			return
@@ -50,15 +50,15 @@ func on_collision(body: Node):
 		self.queue_free()
 
 # Using dict as set because no Set type
-func search_all_from_neighbors(found_nodes: Dictionary):
+func search_all_from_neighbors(found_nodes: Dictionary, is_valid_func: Callable):
 	found_nodes[self] = ""  # dummy value
 	
 	var neighbors = _get_bubble_neighbors()
 	
 	for neighbor in neighbors:
-		if not found_nodes.has(neighbor):
+		if not found_nodes.has(neighbor) and is_valid_func.call(neighbor):
 			found_nodes[neighbor] = ""  # dummy value
-			neighbor.search_all_from_neighbors(found_nodes)
+			neighbor.search_all_from_neighbors(found_nodes, is_valid_func)
 
 func _get_bubble_neighbors():
 	var neighbors = _connectionHitbox.get_overlapping_bodies()
