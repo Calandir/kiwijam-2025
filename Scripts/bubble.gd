@@ -10,7 +10,7 @@ enum BubbleState { Falling, Stuck }
 
 var _currentState: BubbleState
 
-func _enter_tree():
+func _ready():
 	body_entered.connect(on_collision)
 	
 	set_state(BubbleState.Falling)
