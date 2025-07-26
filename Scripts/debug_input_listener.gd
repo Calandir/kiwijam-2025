@@ -6,8 +6,11 @@ extends Node2D
 @export var _spawn_container: Node2D
 
 func _process(delta):
-	if Input.is_action_just_pressed("debug_spawn_bubble"):
+	if Input.is_action_just_pressed("debug_spawn_bubble_red"):
 		_instantiate(_spawn_template_red)
+		
+	if Input.is_action_just_pressed("debug_spawn_bubble_blue"):
+		_instantiate(_spawn_template_blue)
 
 func _instantiate(template: PackedScene):
 	var spawned: Node2D = template.instantiate()
