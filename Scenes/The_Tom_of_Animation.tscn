@@ -1,0 +1,55 @@
+[gd_scene load_steps=14 format=3 uid="uid://mj84idm5kwc3"]
+
+[ext_resource type="Shader" path="res://Shaders/Fire_Shader.tres" id="1_qmgqy"]
+[ext_resource type="Texture2D" path="res://Art/Textures/T_Gradient_circle22.jpg" id="2_eiarl"]
+[ext_resource type="Texture2D" path="res://Art/Textures/T_VFX_Noise_465.png" id="3_p2krx"]
+[ext_resource type="Texture2D" path="res://Art/Textures/T_1_pixel.jpg" id="4_lsxrt"]
+[ext_resource type="Texture2D" uid="uid://ds6nnyk5gb58b" path="res://Art/orb2.png" id="5_g704t"]
+[ext_resource type="Texture2D" uid="uid://ua838vr88q0c" path="res://Art/orb4.png" id="6_eiarl"]
+
+[sub_resource type="Gradient" id="Gradient_r773y"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aka80"]
+gradient = SubResource("Gradient_r773y")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_l85d0"]
+offsets = PackedFloat32Array(0.237705, 0.377049, 0.95082, 0.983607)
+colors = PackedColorArray(0, 0, 0, 0, 0.921569, 0.254902, 0.203922, 1, 1, 0.752941, 0, 1, 1, 0.984314, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jpwe8"]
+gradient = SubResource("Gradient_l85d0")
+
+[sub_resource type="Gradient" id="Gradient_5252r"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8aucf"]
+gradient = SubResource("Gradient_5252r")
+fill_from = Vector2(1, 0.666667)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u67gf"]
+shader = ExtResource("1_qmgqy")
+shader_parameter/Scals = Vector2(1, 1)
+shader_parameter/Speed = Vector2(0, 1)
+shader_parameter/Texture1 = ExtResource("3_p2krx")
+shader_parameter/Base_Glow = SubResource("GradientTexture2D_aka80")
+shader_parameter/Fire_Shape = ExtResource("2_eiarl")
+shader_parameter/Top_Fade = SubResource("GradientTexture2D_8aucf")
+shader_parameter/Colour = SubResource("GradientTexture1D_jpwe8")
+
+[node name="TomAnimation" type="Node2D"]
+
+[node name="Fire_Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_u67gf")
+position = Vector2(138, -23)
+scale = Vector2(175.25, 175.25)
+texture = ExtResource("4_lsxrt")
+
+[node name="Fire_Orb" type="Sprite2D" parent="."]
+position = Vector2(133, 16)
+texture = ExtResource("5_g704t")
+
+[node name="Elec_Sprite" type="Sprite2D" parent="."]
+
+[node name="Elec_Orb" type="Sprite2D" parent="."]
+position = Vector2(-93, 4)
+texture = ExtResource("6_eiarl")
