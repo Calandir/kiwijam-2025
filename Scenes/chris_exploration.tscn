@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://xto32kijwviv"]
+[gd_scene load_steps=7 format=3 uid="uid://xto32kijwviv"]
 
-[ext_resource type="PackedScene" uid="uid://c1x26w3qouwwn" path="res://Scenes/bubble.tscn" id="1_2kg1s"]
-[ext_resource type="Script" uid="uid://qoh4uiogmk5j" path="res://Scripts/debug_input_listener.gd" id="1_efcda"]
 [ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
+[ext_resource type="PackedScene" path="res://Scenes/debug_input_listener.tscn" id="1_y1jy2"]
+[ext_resource type="Script" uid="uid://b7wk0a8fnql6j" path="res://Scenes/spinondrag.gd" id="3_r36mj"]
+[ext_resource type="Script" uid="uid://bym5itbp8q83f" path="res://Scripts/spawner.gd" id="4_y1jy2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 306.163
@@ -14,12 +15,8 @@ radius = 306.163
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 
-[node name="DebugInputListener" type="Node2D" parent="." node_paths=PackedStringArray("_spawn_container")]
-script = ExtResource("1_efcda")
-_spawn_template = ExtResource("1_2kg1s")
-_spawn_container = NodePath("..")
-
 [node name="Center" type="Node2D" parent="."]
+script = ExtResource("3_r36mj")
 
 [node name="Area2D" type="StaticBody2D" parent="Center"]
 
@@ -32,5 +29,9 @@ mesh = SubResource("SphereMesh_uj1bi")
 [node name="Sprite2D" type="Sprite2D" parent="Center"]
 texture = ExtResource("1_fj1i6")
 
-[node name="Bubble" parent="." instance=ExtResource("1_2kg1s")]
-position = Vector2(381, -503)
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("4_y1jy2")
+radius = 1000.0
+
+[node name="DebugInputListener" parent="." node_paths=PackedStringArray("_spawn_container") instance=ExtResource("1_y1jy2")]
+_spawn_container = NodePath("..")

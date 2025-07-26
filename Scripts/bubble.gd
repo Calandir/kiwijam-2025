@@ -1,13 +1,16 @@
 class_name Bubble
 extends RigidBody2D
 
+@export var type: BubbleType = BubbleType.Red
 @export var our_gravity_scale: float = 0.1;
+@export var _connectionHitbox: Area2D;
 
+enum BubbleType { Red, Blue }
 enum BubbleState { Falling, Stuck }
 
 var _currentState: BubbleState
 
-func _enter_tree():
+func _ready():
 	body_entered.connect(on_collision)
 	
 	set_state(BubbleState.Falling)
@@ -24,6 +27,7 @@ func set_state(state: BubbleState):
 	
 	match state:
 		BubbleState.Stuck:
+			reparent(get_tree().current_scene.find_child("Center"))
 			freeze = true
 
 func on_collision(body: Node):
@@ -33,3 +37,14 @@ func on_collision(body: Node):
 	if has_hit_center or has_hit_stuck_bubble:
 		# call_deferred() required to freeze physics at end of frame
 		(func(): self.set_state(BubbleState.Stuck)).call_deferred()
+		
+		var neighbors = _connectionHitbox.get_overlapping_bodies()
+		neighbors = neighbors.filter(func(x): return (x != self) and (x as Bubble) != null)
+		
+		if len(neighbors) < 2:
+			return
+		
+		for neighbor in neighbors:
+			neighbor.queue_free()
+		
+		self.queue_free()
