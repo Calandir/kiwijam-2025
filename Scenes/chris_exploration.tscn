@@ -46,4 +46,8 @@ parameters/looping = true
 [node name="OverflowBorder" parent="." instance=ExtResource("6_uj86v")]
 
 [node name="GameOverRoot" parent="." instance=ExtResource("7_uj86v")]
+
+[node name="CanvasLayer" parent="GameOverRoot" index="0"]
 visible = false
+
+[editable path="GameOverRoot"]
