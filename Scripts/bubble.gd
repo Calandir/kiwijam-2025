@@ -27,6 +27,7 @@ func set_state(state: BubbleState):
 	
 	match state:
 		BubbleState.Stuck:
+			reparent(get_tree().current_scene.find_child("Center"))
 			freeze = true
 
 func on_collision(body: Node):
