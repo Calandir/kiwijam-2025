@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://psjdht47j6ot"]
 
 [ext_resource type="Script" uid="uid://bmlo3ptwa7wp8" path="res://Scripts/bubble.gd" id="1_l623x"]
-[ext_resource type="Texture2D" uid="uid://ds6nnyk5gb58b" path="res://Art/orb2.png" id="2_2bjgc"]
+[ext_resource type="Texture2D" uid="uid://p06sho3mvvcy" path="res://Art/orb6.png" id="2_l623x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 40.0
@@ -23,8 +23,7 @@ _connectionHitbox = NodePath("LargerArea2D")
 shape = SubResource("CircleShape2D_uj1bi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 1, 1)
-texture = ExtResource("2_2bjgc")
+texture = ExtResource("2_l623x")
 
 [node name="LargerArea2D" type="Area2D" parent="."]
 collision_layer = 2
