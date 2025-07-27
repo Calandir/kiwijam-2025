@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmkqbwkr7kd8e"]
+[gd_scene load_steps=16 format=3 uid="uid://bmkqbwkr7kd8e"]
 
 [ext_resource type="Texture2D" uid="uid://dib5sldoon5nn" path="res://Art/background.png" id="1_s82d0"]
 [ext_resource type="Texture2D" uid="uid://cafqmaaaaot2n" path="res://Art/player0.png" id="2_2ppl1"]
@@ -6,13 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://b30i3ho3fc22c" path="res://Art/button_start.png" id="4_ubx1x"]
 [ext_resource type="Texture2D" uid="uid://bvqpyjs4hk1np" path="res://Art/button_instructions.png" id="5_nny74"]
 [ext_resource type="Texture2D" uid="uid://cjlwy7m46ek65" path="res://Art/button_credits.png" id="6_ogfep"]
+[ext_resource type="Texture2D" uid="uid://bc7mg5iyalsd2" path="res://Art/exit.png" id="7_7rp6t"]
 [ext_resource type="Texture2D" uid="uid://b7tyd8vaw2bo0" path="res://Art/title.png" id="7_7wn6m"]
 [ext_resource type="AudioStream" uid="uid://d2keitfm22wlb" path="res://Audio/title.ogg" id="8_2ppl1"]
+[ext_resource type="Script" uid="uid://c0ae4xhxodwvk" path="res://Scripts/quit_game.gd" id="8_hwp1q"]
 [ext_resource type="Texture2D" uid="uid://dd0iyjemw80ic" path="res://Art/credits.png" id="9_nny74"]
-[ext_resource type="Script" uid="uid://hxj3sdl817iw" path="res://Scenes/credits.gd" id="10_7wn6m"]
+[ext_resource type="Script" path="res://Scenes/credits.gd" id="10_7wn6m"]
 [ext_resource type="Texture2D" uid="uid://cvr12xvp28xtj" path="res://Art/instructions.png" id="10_ogfep"]
-[ext_resource type="PackedScene" path="res://Scenes/sfx_player.tscn" id="10_ubx1x"]
-[ext_resource type="Script" uid="uid://tkl8uruvl1j6" path="res://Scenes/instructions.gd" id="11_7wn6m"]
+[ext_resource type="PackedScene" uid="uid://b8jfnc0klgfw4" path="res://Scenes/sfx_player.tscn" id="10_ubx1x"]
+[ext_resource type="Script" path="res://Scenes/instructions.gd" id="11_7wn6m"]
 
 [node name="TashMenu" type="Node2D"]
 
@@ -81,6 +83,19 @@ offset_bottom = 47.0
 focus_mode = 0
 flat = true
 
+[node name="ButtonExit" type="Sprite2D" parent="."]
+position = Vector2(298, 832)
+texture = ExtResource("7_7rp6t")
+
+[node name="button" type="Button" parent="ButtonExit"]
+offset_left = -159.0
+offset_top = -39.0
+offset_right = 167.0
+offset_bottom = 47.0
+focus_mode = 0
+flat = true
+script = ExtResource("8_hwp1q")
+
 [node name="Title" type="Sprite2D" parent="."]
 position = Vector2(532, 365.5)
 texture = ExtResource("7_7wn6m")
@@ -134,5 +149,7 @@ parameters/looping = true
 [connection signal="pressed" from="ButtonInstructions/openButtonInstructions" to="instructions" method="_on_open_button_instructions_pressed"]
 [connection signal="mouse_entered" from="ButtonCredits/openButtonCredits" to="SFXPlayer" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ButtonCredits/openButtonCredits" to="credits" method="_on_open_button_credits_pressed"]
+[connection signal="mouse_entered" from="ButtonExit/button" to="SFXPlayer" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonExit/button" to="ButtonExit/button" method="_on_pressed"]
 [connection signal="pressed" from="credits/closeButtonCredits" to="credits" method="_on_close_button_credits_pressed"]
 [connection signal="pressed" from="instructions/closeButtonInstructions" to="instructions" method="_on_close_button_instructions_pressed"]
