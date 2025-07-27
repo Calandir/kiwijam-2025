@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://xto32kijwviv"]
+[gd_scene load_steps=13 format=3 uid="uid://xto32kijwviv"]
 
 [ext_resource type="Script" uid="uid://dc1bhhjiyn1fs" path="res://Scripts/game_state.gd" id="1_essuw"]
 [ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ccmcv64tkxgkh" path="res://Scenes/overflow_border.tscn" id="6_uj86v"]
 [ext_resource type="PackedScene" uid="uid://k5vvnewcxddd" path="res://Scenes/game_over_root.tscn" id="7_uj86v"]
 [ext_resource type="PackedScene" path="res://Scenes/sfx_player.tscn" id="9_5i8yc"]
+[ext_resource type="PackedScene" uid="uid://dali6f8g5gje3" path="res://Scenes/game_ui.tscn" id="11_flaj5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 306.163
@@ -56,3 +57,5 @@ parameters/looping = true
 game_state = NodePath("../GameState")
 
 [node name="SFXPlayer" parent="." instance=ExtResource("9_5i8yc")]
+
+[node name="GameUIRoot" parent="." instance=ExtResource("11_flaj5")]
