@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b7kcl51tv0b8a" path="res://Art/orb1.png" id="12_2gdtp"]
 [ext_resource type="Texture2D" uid="uid://l77v1fdliiwq" path="res://Art/particle1.png" id="13_jrqjn"]
 [ext_resource type="Texture2D" uid="uid://p06sho3mvvcy" path="res://Art/orb6.png" id="14_3vd3s"]
-[ext_resource type="Shader" uid="uid://bew7l38kfm3se" path="res://Shaders/Dark_Shader.tres" id="15_ifnwi"]
+[ext_resource type="Shader" uid="uid://c602b5swow5a" path="res://Shaders/Dark_Shader.tres" id="15_ifnwi"]
 [ext_resource type="Texture2D" uid="uid://bmhmhnddb26bp" path="res://Art/Textures/T_VFX_Glow_1.PNG" id="16_6gmfk"]
 [ext_resource type="Texture2D" uid="uid://vy8hbpde83i2" path="res://Art/Textures/T_VFX_PerlinNoise_Tiled.png" id="17_iosok"]
 

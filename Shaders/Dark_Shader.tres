@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=27 format=3 uid="uid://bew7l38kfm3se"]
+[gd_resource type="VisualShader" load_steps=27 format=3 uid="uid://c602b5swow5a"]
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_xjnv4"]
 linked_parent_graph_frame = 16

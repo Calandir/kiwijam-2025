@@ -1,0 +1,43 @@
+[gd_scene load_steps=13 format=3 uid="uid://4vqeab645tmx"]
+
+[ext_resource type="Shader" uid="uid://ccu7x2keeeta8" path="res://Shaders/Fire_Shader.tres" id="1_683qr"]
+[ext_resource type="Texture2D" uid="uid://b4tvepgja7j5s" path="res://Art/Textures/T_Gradient_circle22.jpg" id="2_yoni0"]
+[ext_resource type="Texture2D" uid="uid://ccvqtisx537qn" path="res://Art/Textures/T_VFX_Noise_465.png" id="3_gfqbx"]
+[ext_resource type="Texture2D" uid="uid://c3lkpaidjverf" path="res://Art/Textures/T_1_pixel.jpg" id="4_i8tgl"]
+[ext_resource type="Script" uid="uid://dsjwqc42m8wp1" path="res://Scripts/destroy_soon.gd" id="5_yoni0"]
+
+[sub_resource type="Gradient" id="Gradient_r773y"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aka80"]
+gradient = SubResource("Gradient_r773y")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_l85d0"]
+offsets = PackedFloat32Array(0.237705, 0.377049, 0.95082, 0.983607)
+colors = PackedColorArray(0, 0, 0, 0, 0.921569, 0.254902, 0.203922, 1, 1, 0.752941, 0, 1, 1, 0.984314, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jpwe8"]
+gradient = SubResource("Gradient_l85d0")
+
+[sub_resource type="Gradient" id="Gradient_5252r"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8aucf"]
+gradient = SubResource("Gradient_5252r")
+fill_from = Vector2(1, 0.666667)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u67gf"]
+shader = ExtResource("1_683qr")
+shader_parameter/Scals = Vector2(1, 1)
+shader_parameter/Speed = Vector2(0, 1)
+shader_parameter/Texture1 = ExtResource("3_gfqbx")
+shader_parameter/Base_Glow = SubResource("GradientTexture2D_aka80")
+shader_parameter/Fire_Shape = ExtResource("2_yoni0")
+shader_parameter/Top_Fade = SubResource("GradientTexture2D_8aucf")
+shader_parameter/Colour = SubResource("GradientTexture1D_jpwe8")
+
+[node name="Fire_Effect" type="Sprite2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_u67gf")
+scale = Vector2(175.25, 175.25)
+texture = ExtResource("4_i8tgl")
+script = ExtResource("5_yoni0")
