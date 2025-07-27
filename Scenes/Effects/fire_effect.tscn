@@ -39,7 +39,6 @@ shader_parameter/Colour = SubResource("GradientTexture1D_jpwe8")
 [node name="Fire_Effect" type="Sprite2D"]
 z_index = -1
 material = SubResource("ShaderMaterial_u67gf")
-position = Vector2(0, -28)
 scale = Vector2(175.25, 175.25)
 texture = ExtResource("4_i8tgl")
 script = ExtResource("5_yoni0")
@@ -58,4 +57,3 @@ angular_velocity_min = -160.0
 angular_velocity_max = 58.18
 scale_amount_min = 0.1
 scale_amount_max = 0.5
-script = ExtResource("5_yoni0")

@@ -12,35 +12,35 @@ source = 5
 texture_type = 1
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_lkpf1"]
-size = Vector2(244, 302)
+size = Vector2(520, 770)
 title = "Base Texture"
 tint_color_enabled = true
 tint_color = Color(0.699219, 0.303924, 0.166611, 0.75)
 attached_nodes = PackedInt32Array(3, 2)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_5q1qw"]
-size = Vector2(244, 382)
+size = Vector2(520, 850)
 title = "Base Glow"
 tint_color_enabled = true
 tint_color = Color(0.394531, 0.0970917, 0.0970917, 0.75)
 attached_nodes = PackedInt32Array(5, 4)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_66uyb"]
-size = Vector2(244, 382)
+size = Vector2(520, 850)
 title = "Fire Shape"
 tint_color_enabled = true
 tint_color = Color(0.396078, 0.0980392, 0.0980392, 0.74902)
 attached_nodes = PackedInt32Array(7, 6)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_yg2a7"]
-size = Vector2(244, 382)
+size = Vector2(520, 850)
 title = "Top Fade"
 tint_color_enabled = true
 tint_color = Color(0.396078, 0.0980392, 0.0980392, 0.74902)
 attached_nodes = PackedInt32Array(9, 8)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_uihq4"]
-size = Vector2(244, 382)
+size = Vector2(520, 850)
 title = "Colour"
 tint_color_enabled = true
 tint_color = Color(0.396078, 0.0980392, 0.0980392, 0.74902)
