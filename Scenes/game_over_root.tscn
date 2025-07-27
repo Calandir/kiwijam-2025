@@ -21,3 +21,19 @@ grow_vertical = 2
 position = Vector2(595, 350)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_hul7l")
+
+[node name="SparkParticles" type="CPUParticles2D" parent="CanvasLayer/Scaler"]
+z_index = -2
+position = Vector2(595, 359)
+emitting = false
+amount = 300
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2(5, -5)
+spread = 150.0
+gravity = Vector2(0, 500)
+initial_velocity_max = 500.0
+angular_velocity_max = 20.0
+scale_amount_max = 5.0
