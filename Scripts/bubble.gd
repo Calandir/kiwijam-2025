@@ -46,10 +46,13 @@ func set_state(state: BubbleState, new_parent: Node2D):
 	
 	match state:
 		BubbleState.Stuck:
-			reparent(new_parent)
-			freeze = true
+			# Extra check, avoid exception if cyclic reparenting
+			if not is_ancestor_of(new_parent):
+				reparent(new_parent)
+				freeze = true
 			
-			var is_game_over: bool = not _overflowBorder.overlaps_body(self)
+			# HACK: Don't actualy use _overflow_border, sometimes it returned False unexpectedly
+			var is_game_over: bool = self.global_position.distance_to(Vector2.ZERO) > 875
 			if is_game_over and is_inside_tree():
 				var game_state = get_tree().current_scene.find_child("GameState", true)
 				if game_state != null:
