@@ -9,8 +9,14 @@ func _process(delta):
 var target_speed = 10  # final speed
 var duration = 0.6  # seconds
 
+var has_been_clicked: bool = false
 
 func _on_button_pressed():
+	if has_been_clicked:
+		return
+	
+	has_been_clicked = true
+	
 	var _bgmPlayer = get_tree().current_scene.find_child("BGMPlayer", true)
 	_bgmPlayer.volume_db = -5
 	var _sfxPlayer = get_tree().current_scene.find_child("SFXPlayer", true)
