@@ -107,6 +107,18 @@ position = Vector2(611, 596)
 texture = ExtResource("9_nny74")
 script = ExtResource("10_7wn6m")
 
+[node name="Control" type="Control" parent="credits"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -500.0
+offset_right = -500.0
+offset_bottom = -500.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="closeButtonCredits" type="Button" parent="credits"]
 z_index = 2
 anchors_preset = -1
