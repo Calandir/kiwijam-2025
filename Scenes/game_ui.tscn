@@ -44,3 +44,5 @@ theme_override_font_sizes/font_size = 64
 text = "Score: 999"
 horizontal_alignment = 2
 script = ExtResource("2_xjnnq")
+
+[connection signal="mouse_entered" from="CanvasLayer/Scaler/QuitToTitle" to="CanvasLayer/Scaler/QuitToTitle" method="_on_mouse_entered"]
