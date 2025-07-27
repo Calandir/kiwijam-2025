@@ -44,8 +44,6 @@ func set_state(state: BubbleState, new_parent: Node2D):
 	var previous_state: BubbleState = _currentState
 	_currentState = state
 	
-	var test = get_tree().current_scene
-	
 	match state:
 		BubbleState.Stuck:
 			reparent(new_parent)
