@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ux51ya123dil"]
+[gd_scene load_steps=4 format=3 uid="uid://ccmcv64tkxgkh"]
 
 [ext_resource type="Texture2D" uid="uid://basnn0kbyniyb" path="res://Art/border.png" id="1_1jtr1"]
 [ext_resource type="Script" uid="uid://drfktkrkco6rq" path="res://Scenes/border.gd" id="2_efaj3"]

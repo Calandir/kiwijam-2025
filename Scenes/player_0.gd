@@ -22,8 +22,8 @@ func _on_button_pressed():
 	tween.tween_property(self, "scale", self.scale * 0.7, 0.5) \
 	.set_trans(Tween.TRANS_SINE) \
 	.set_ease(Tween.EASE_OUT)
-	
-	tween.tween_property(self, "modulate", Color(1, 0.9, 0.7, 1), 1.0)
+	tween.tween_property(self, "modulate", Color(0.5, 0.8, 1, 1), 0.5)
+	tween.tween_property(self, "modulate", Color(0, 0, 0, 0), 0.5)
 
 func increase_rotation_speed_over_time(target: float, time: float) -> void:
 	var start_speed = rotation_speed

@@ -1,5 +1,11 @@
 extends Node
 
+var sparkle_sfx := [
+	load("res://Audio/sparkle_1.wav"),
+	load("res://Audio/sparkle_2.wav"),
+	load("res://Audio/sparkle_3.wav"),
+	load("res://Audio/sparkle_4.wav"),
+]
 var miss_sfx := [
 	load("res://Audio/miss.wav"),
 ]
@@ -9,6 +15,9 @@ var connect_sfx := [
 var spell_sfx := [
 	load("res://Audio/spell.wav"),
 ]
+
+func play_sparkle_sfx():
+	play_sfx(sparkle_sfx[randi() % len(sparkle_sfx)], -5.0)
 
 func play_miss_sfx():
 	play_sfx(miss_sfx[randi() % len(miss_sfx)])
@@ -29,3 +38,7 @@ func play_sfx(audio_stream: AudioStream, volume_db: float = 0.0):
 	player.play()
 	await player.finished
 	player.queue_free()
+
+
+func _on_button_mouse_entered() -> void:
+	play_sparkle_sfx()

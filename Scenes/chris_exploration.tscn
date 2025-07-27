@@ -5,11 +5,11 @@
 [ext_resource type="Script" uid="uid://b7wk0a8fnql6j" path="res://Scripts/spinondrag.gd" id="3_r36mj"]
 [ext_resource type="AudioStream" uid="uid://dmlis47shos5t" path="res://Audio/bgm.ogg" id="4_r36mj"]
 [ext_resource type="Script" uid="uid://bym5itbp8q83f" path="res://Scripts/spawner.gd" id="4_y1jy2"]
-[ext_resource type="PackedScene" uid="uid://dew32pop3u3px" path="res://Scenes/fullscreen_background.tscn" id="5_r36mj"]
+[ext_resource type="PackedScene" path="res://Scenes/fullscreen_background.tscn" id="5_r36mj"]
 [ext_resource type="PackedScene" uid="uid://ccmcv64tkxgkh" path="res://Scenes/overflow_border.tscn" id="6_uj86v"]
 [ext_resource type="PackedScene" uid="uid://k5vvnewcxddd" path="res://Scenes/game_over_root.tscn" id="7_uj86v"]
 [ext_resource type="PackedScene" path="res://Scenes/sfx_player.tscn" id="9_5i8yc"]
-[ext_resource type="PackedScene" uid="uid://dali6f8g5gje3" path="res://Scenes/game_ui.tscn" id="11_flaj5"]
+[ext_resource type="PackedScene" path="res://Scenes/game_ui.tscn" id="11_flaj5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 306.163
