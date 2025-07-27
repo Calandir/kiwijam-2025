@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpsq5vg6b7bf3"]
+[gd_scene load_steps=4 format=3 uid="uid://dpsq5vg6b7bf3"]
 
+[ext_resource type="PackedScene" uid="uid://bcsp6orf414ma" path="res://Scenes/quit_to_title.tscn" id="1_xjnnq"]
 [ext_resource type="FontFile" uid="uid://clcsxsgj4qspl" path="res://Fonts/POORICH.TTF" id="2_bw2rt"]
 [ext_resource type="Script" path="res://Scripts/score_label.gd" id="2_xjnnq"]
 
@@ -19,6 +20,16 @@ offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="QuitToTitle" parent="CanvasLayer/Scaler" instance=ExtResource("1_xjnnq")]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 207.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("2_bw2rt")
+theme_override_font_sizes/font_size = 64
+flat = true
 
 [node name="Label" type="Label" parent="CanvasLayer/Scaler"]
 layout_mode = 1

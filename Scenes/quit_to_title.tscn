@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcsp6orf414ma"]
+
+[ext_resource type="Script" uid="uid://bubnt0bs1d1lv" path="res://Scripts/quit_to_title.gd" id="1_jbck0"]
+
+[node name="QuitToTitle" type="Button"]
+offset_right = 231.0
+offset_bottom = 149.0
+text = "Quit"
+script = ExtResource("1_jbck0")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
