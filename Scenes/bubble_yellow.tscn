@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://kikbop3abrkk"]
+[gd_scene load_steps=6 format=3 uid="uid://kikbop3abrkk"]
 
 [ext_resource type="Script" uid="uid://bmlo3ptwa7wp8" path="res://Scripts/bubble.gd" id="1_ygsoe"]
+[ext_resource type="PackedScene" uid="uid://b1al0oq1k8h3o" path="res://Scenes/Effects/elec_effect.tscn" id="2_i3jso"]
 [ext_resource type="Texture2D" uid="uid://ua838vr88q0c" path="res://Art/orb4.png" id="2_ygsoe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
@@ -18,6 +19,7 @@ script = ExtResource("1_ygsoe")
 type = 4
 our_gravity_scale = 0.05
 _connectionHitbox = NodePath("LargerArea2D")
+_spawnOnCombo = Array[PackedScene]([ExtResource("2_i3jso")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uj1bi")

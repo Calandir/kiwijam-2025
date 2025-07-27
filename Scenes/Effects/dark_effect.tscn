@@ -1,0 +1,31 @@
+[gd_scene load_steps=9 format=3 uid="uid://buy3t84ho0pqe"]
+
+[ext_resource type="Shader" uid="uid://c602b5swow5a" path="res://Shaders/Dark_Shader.tres" id="1_mgfxj"]
+[ext_resource type="Texture2D" uid="uid://c3lkpaidjverf" path="res://Art/Textures/T_1_pixel.jpg" id="2_an70v"]
+[ext_resource type="Texture2D" uid="uid://bmhmhnddb26bp" path="res://Art/Textures/T_VFX_Glow_1.PNG" id="3_2jd77"]
+[ext_resource type="Texture2D" uid="uid://vy8hbpde83i2" path="res://Art/Textures/T_VFX_PerlinNoise_Tiled.png" id="4_02iky"]
+[ext_resource type="Script" uid="uid://dsjwqc42m8wp1" path="res://Scripts/destroy_soon.gd" id="5_an70v"]
+
+[sub_resource type="Gradient" id="Gradient_dpsmm"]
+offsets = PackedFloat32Array(0, 0.172131, 0.516393, 0.786885, 0.909836, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.486275, 0, 0.596078, 1, 1, 0, 1, 1, 0.935731, 0, 0.949468, 1, 0.923893, 0, 0.94016, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j2ait"]
+gradient = SubResource("Gradient_dpsmm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dif1v"]
+shader = ExtResource("1_mgfxj")
+shader_parameter/Scals = Vector2(1, 1)
+shader_parameter/Speed = Vector2(0.5, 0.5)
+shader_parameter/Texture1 = ExtResource("4_02iky")
+shader_parameter/Base_Glow = ExtResource("2_an70v")
+shader_parameter/Fire_Shape = ExtResource("3_2jd77")
+shader_parameter/Top_Fade = ExtResource("2_an70v")
+shader_parameter/Colour = SubResource("GradientTexture1D_j2ait")
+
+[node name="Dark_Effect" type="Sprite2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_dif1v")
+scale = Vector2(230.875, 217.426)
+texture = ExtResource("2_an70v")
+script = ExtResource("5_an70v")

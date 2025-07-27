@@ -4,6 +4,7 @@ extends RigidBody2D
 @export var type: BubbleType = BubbleType.Red
 @export var our_gravity_scale: float = 0.1;
 @export var _connectionHitbox: Area2D;
+@export var _spawnOnCombo: Array[PackedScene]
 
 enum BubbleType
 {
@@ -90,7 +91,19 @@ func on_collision(body: Node):
 			(func(): orphan.set_state(BubbleState.Falling, get_tree().current_scene)).call_deferred()
 			
 		for x in all_matches:
+			x._play_effect()
 			x.queue_free()
+
+func _play_effect():
+	if not is_inside_tree():
+		return
+	
+	for effect in _spawnOnCombo:
+		var new = effect.instantiate()
+		new.position = self.global_position
+		get_tree().current_scene.add_child(new)
+	
+	queue_free()
 
 func _get_bubble_matching_neighbors() -> Array[Bubble]:
 	var neighbors = _connectionHitbox.get_overlapping_bodies()

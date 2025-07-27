@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyqjqfyeuep5v"]
+
+[ext_resource type="Texture2D" uid="uid://l77v1fdliiwq" path="res://Art/particle1.png" id="1_xd3ni"]
+[ext_resource type="Script" uid="uid://dsjwqc42m8wp1" path="res://Scripts/destroy_soon.gd" id="2_4cc3j"]
+
+[node name="Ice_Effect" type="CPUParticles2D"]
+z_index = -1
+amount = 50
+texture = ExtResource("1_xd3ni")
+lifetime_randomness = 0.2
+direction = Vector2(0, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 101.01
+angular_velocity_min = -160.0
+angular_velocity_max = 58.18
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+script = ExtResource("2_4cc3j")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs3rfelf7hmbf"]
+[gd_scene load_steps=6 format=3 uid="uid://bs3rfelf7hmbf"]
 
 [ext_resource type="Script" uid="uid://bmlo3ptwa7wp8" path="res://Scripts/bubble.gd" id="1_t8dvd"]
 [ext_resource type="Texture2D" uid="uid://cpj7vl1onkvya" path="res://Art/orb5.png" id="2_t8dvd"]
+[ext_resource type="PackedScene" uid="uid://dd8hmjauyha85" path="res://Scenes/Effects/rock_effect.tscn" id="2_w01os"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 40.0
@@ -18,6 +19,7 @@ script = ExtResource("1_t8dvd")
 type = 5
 our_gravity_scale = 0.05
 _connectionHitbox = NodePath("LargerArea2D")
+_spawnOnCombo = Array[PackedScene]([ExtResource("2_w01os")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uj1bi")
