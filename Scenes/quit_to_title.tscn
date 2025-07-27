@@ -8,4 +8,4 @@ offset_bottom = 149.0
 text = "Quit"
 script = ExtResource("1_jbck0")
 
-[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
