@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ble3xrfucqi74"]
+[gd_scene load_steps=44 format=3 uid="uid://ble3xrfucqi74"]
 
 [ext_resource type="Shader" uid="uid://ccu7x2keeeta8" path="res://Shaders/Fire_Shader.tres" id="1_qmgqy"]
 [ext_resource type="Texture2D" uid="uid://b4tvepgja7j5s" path="res://Art/Textures/T_Gradient_circle22.jpg" id="2_eiarl"]
@@ -6,7 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://c3lkpaidjverf" path="res://Art/Textures/T_1_pixel.jpg" id="4_lsxrt"]
 [ext_resource type="Texture2D" uid="uid://ds6nnyk5gb58b" path="res://Art/orb2.png" id="5_g704t"]
 [ext_resource type="Texture2D" uid="uid://ua838vr88q0c" path="res://Art/orb4.png" id="6_eiarl"]
-[ext_resource type="Shader" uid="uid://bodh0yi4jwc37" path="res://Shaders/Elec_Shader.tres" id="6_p2krx"]
+[ext_resource type="Texture2D" uid="uid://cvl3bpq2c58qc" path="res://Art/Elec_Sprite3.png" id="7_mamsu"]
+[ext_resource type="Texture2D" uid="uid://denj1sj16vvwu" path="res://Art/orb3.png" id="8_qxgp0"]
+[ext_resource type="Texture2D" uid="uid://5cf4jrfbfxaf" path="res://Art/particle3.png" id="9_j2p5x"]
+[ext_resource type="Texture2D" uid="uid://cpj7vl1onkvya" path="res://Art/orb5.png" id="10_ryq57"]
+[ext_resource type="Texture2D" uid="uid://0odgiofed5p3" path="res://Art/particle5.png" id="11_0y5tn"]
+[ext_resource type="Texture2D" uid="uid://b7kcl51tv0b8a" path="res://Art/orb1.png" id="12_2gdtp"]
+[ext_resource type="Texture2D" uid="uid://l77v1fdliiwq" path="res://Art/particle1.png" id="13_jrqjn"]
+[ext_resource type="Texture2D" uid="uid://p06sho3mvvcy" path="res://Art/orb6.png" id="14_3vd3s"]
+[ext_resource type="Shader" uid="uid://bew7l38kfm3se" path="res://Shaders/Dark_Shader.tres" id="15_ifnwi"]
+[ext_resource type="Texture2D" uid="uid://bmhmhnddb26bp" path="res://Art/Textures/T_VFX_Glow_1.PNG" id="16_6gmfk"]
+[ext_resource type="Texture2D" uid="uid://vy8hbpde83i2" path="res://Art/Textures/T_VFX_PerlinNoise_Tiled.png" id="17_iosok"]
 
 [sub_resource type="Gradient" id="Gradient_r773y"]
 
@@ -37,29 +47,224 @@ shader_parameter/Fire_Shape = ExtResource("2_eiarl")
 shader_parameter/Top_Fade = SubResource("GradientTexture2D_8aucf")
 shader_parameter/Colour = SubResource("GradientTexture1D_jpwe8")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsxrt"]
-shader = ExtResource("6_p2krx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_u12r4"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(0, 0, 750, 750)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_g704t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dckuv"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(750, 0, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3njn"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(1500, 0, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4q37"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(0, 750, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qplx4"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(750, 750, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8mry"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(1500, 750, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ddvn"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(0, 1500, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2n2v"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(750, 1500, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqrr1"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(1500, 1500, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je6xw"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(0, 2250, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yae6"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(750, 2250, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_648ur"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(1500, 2250, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyulp"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(0, 3000, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3xbh"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(750, 3000, 750, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0he1"]
+atlas = ExtResource("7_mamsu")
+region = Rect2(1500, 3000, 750, 750)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sc2qg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u12r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dckuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3njn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4q37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qplx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8mry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ddvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2n2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqrr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je6xw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yae6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_648ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyulp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3xbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0he1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_dpsmm"]
+offsets = PackedFloat32Array(0, 0.172131, 0.516393, 0.786885, 0.909836, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.486275, 0, 0.596078, 1, 1, 0, 1, 1, 0.935731, 0, 0.949468, 1, 0.923893, 0, 0.94016, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j2ait"]
+gradient = SubResource("Gradient_dpsmm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dif1v"]
+shader = ExtResource("15_ifnwi")
+shader_parameter/Scals = Vector2(1, 1)
+shader_parameter/Speed = Vector2(0.5, 0.5)
+shader_parameter/Texture1 = ExtResource("17_iosok")
+shader_parameter/Base_Glow = ExtResource("4_lsxrt")
+shader_parameter/Fire_Shape = ExtResource("16_6gmfk")
+shader_parameter/Top_Fade = ExtResource("4_lsxrt")
+shader_parameter/Colour = SubResource("GradientTexture1D_j2ait")
 
 [node name="TomAnimation" type="Node2D"]
-
-[node name="Fire_Sprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_u67gf")
-position = Vector2(138, -23)
-scale = Vector2(175.25, 175.25)
-texture = ExtResource("4_lsxrt")
 
 [node name="Fire_Orb" type="Sprite2D" parent="."]
 position = Vector2(133, 16)
 texture = ExtResource("5_g704t")
 
-[node name="Elec_Sprite" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_lsxrt")
-position = Vector2(-93, 6)
-scale = Vector2(0.104333, 0.104333)
-sprite_frames = SubResource("SpriteFrames_g704t")
+[node name="Fire_Effect" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_u67gf")
+position = Vector2(138, -23)
+scale = Vector2(175.25, 175.25)
+texture = ExtResource("4_lsxrt")
 
 [node name="Elec_Orb" type="Sprite2D" parent="."]
 position = Vector2(-93, 4)
 texture = ExtResource("6_eiarl")
+
+[node name="Elec_Effect" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-91, 5)
+scale = Vector2(0.142833, 0.1295)
+sprite_frames = SubResource("SpriteFrames_sc2qg")
+frame_progress = 0.998948
+
+[node name="Leaf_Orb" type="Sprite2D" parent="."]
+position = Vector2(-58, 173)
+texture = ExtResource("8_qxgp0")
+
+[node name="Leaf_Effect" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-55, 172)
+amount = 50
+texture = ExtResource("9_j2p5x")
+lifetime_randomness = 0.2
+direction = Vector2(0, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 101.01
+angular_velocity_min = -160.0
+angular_velocity_max = 58.18
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+
+[node name="Rock_Orb" type="Sprite2D" parent="."]
+position = Vector2(143, 175)
+texture = ExtResource("10_ryq57")
+
+[node name="Rock_Effect" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(145, 177)
+amount = 50
+texture = ExtResource("11_0y5tn")
+lifetime_randomness = 0.2
+direction = Vector2(0, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 101.01
+angular_velocity_min = -160.0
+angular_velocity_max = 58.18
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+
+[node name="Ice_Orb" type="Sprite2D" parent="."]
+position = Vector2(-247, 171)
+texture = ExtResource("12_2gdtp")
+
+[node name="Ice_Effect" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-245, 169)
+amount = 50
+texture = ExtResource("13_jrqjn")
+lifetime_randomness = 0.2
+direction = Vector2(0, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 101.01
+angular_velocity_min = -160.0
+angular_velocity_max = 58.18
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+
+[node name="Dark_Orb" type="Sprite2D" parent="."]
+position = Vector2(-256, -3)
+texture = ExtResource("14_3vd3s")
+
+[node name="Dark_Effect" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_dif1v")
+position = Vector2(-255, -1.90735e-06)
+scale = Vector2(230.875, 217.426)
+texture = ExtResource("4_lsxrt")
