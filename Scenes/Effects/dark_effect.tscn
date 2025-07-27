@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://buy3t84ho0pqe"]
+[gd_scene load_steps=10 format=3 uid="uid://buy3t84ho0pqe"]
 
 [ext_resource type="Shader" uid="uid://c602b5swow5a" path="res://Shaders/Dark_Shader.tres" id="1_mgfxj"]
 [ext_resource type="Texture2D" uid="uid://c3lkpaidjverf" path="res://Art/Textures/T_1_pixel.jpg" id="2_an70v"]
 [ext_resource type="Texture2D" uid="uid://bmhmhnddb26bp" path="res://Art/Textures/T_VFX_Glow_1.PNG" id="3_2jd77"]
 [ext_resource type="Texture2D" uid="uid://vy8hbpde83i2" path="res://Art/Textures/T_VFX_PerlinNoise_Tiled.png" id="4_02iky"]
-[ext_resource type="Script" path="res://Scripts/destroy_soon.gd" id="5_an70v"]
+[ext_resource type="Script" uid="uid://dsjwqc42m8wp1" path="res://Scripts/destroy_soon.gd" id="5_an70v"]
+[ext_resource type="Texture2D" uid="uid://dds7faflbuv0a" path="res://Art/particle2.png" id="6_2jd77"]
 
 [sub_resource type="Gradient" id="Gradient_dpsmm"]
-offsets = PackedFloat32Array(0, 0.483607, 0.672131)
+offsets = PackedFloat32Array(0.0901639, 0.213115, 0.47541)
 colors = PackedColorArray(0, 0, 0, 0, 0.338269, 0.00138491, 0.711297, 1, 0.530662, 0.00113425, 0.68133, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j2ait"]
@@ -28,4 +29,19 @@ z_index = -1
 material = SubResource("ShaderMaterial_dif1v")
 scale = Vector2(230.875, 217.426)
 texture = ExtResource("2_an70v")
+script = ExtResource("5_an70v")
+
+[node name="Leaf_Effect" type="CPUParticles2D" parent="."]
+z_index = -1
+amount = 50
+texture = ExtResource("6_2jd77")
+lifetime_randomness = 0.2
+direction = Vector2(0, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 1.0
+angular_velocity_min = -160.0
+angular_velocity_max = 58.18
+scale_amount_min = 0.1
+scale_amount_max = 0.5
 script = ExtResource("5_an70v")

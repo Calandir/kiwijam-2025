@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://4vqeab645tmx"]
+[gd_scene load_steps=14 format=3 uid="uid://4vqeab645tmx"]
 
 [ext_resource type="Shader" uid="uid://ccu7x2keeeta8" path="res://Shaders/Fire_Shader.tres" id="1_683qr"]
 [ext_resource type="Texture2D" uid="uid://b4tvepgja7j5s" path="res://Art/Textures/T_Gradient_circle22.jpg" id="2_yoni0"]
 [ext_resource type="Texture2D" uid="uid://ccvqtisx537qn" path="res://Art/Textures/T_VFX_Noise_465.png" id="3_gfqbx"]
 [ext_resource type="Texture2D" uid="uid://c3lkpaidjverf" path="res://Art/Textures/T_1_pixel.jpg" id="4_i8tgl"]
 [ext_resource type="Script" uid="uid://dsjwqc42m8wp1" path="res://Scripts/destroy_soon.gd" id="5_yoni0"]
+[ext_resource type="Texture2D" uid="uid://bxwnfk3t3k4b4" path="res://Art/particle4.png" id="6_gfqbx"]
 
 [sub_resource type="Gradient" id="Gradient_r773y"]
 
@@ -38,6 +39,23 @@ shader_parameter/Colour = SubResource("GradientTexture1D_jpwe8")
 [node name="Fire_Effect" type="Sprite2D"]
 z_index = -1
 material = SubResource("ShaderMaterial_u67gf")
+position = Vector2(0, -28)
 scale = Vector2(175.25, 175.25)
 texture = ExtResource("4_i8tgl")
+script = ExtResource("5_yoni0")
+
+[node name="Leaf_Effect" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-4.65661e-10, 0.171184)
+amount = 50
+texture = ExtResource("6_gfqbx")
+lifetime_randomness = 0.2
+direction = Vector2(0, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 1.0
+angular_velocity_min = -160.0
+angular_velocity_max = 58.18
+scale_amount_min = 0.1
+scale_amount_max = 0.5
 script = ExtResource("5_yoni0")
