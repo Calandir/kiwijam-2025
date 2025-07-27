@@ -8,6 +8,10 @@ var spawner # Set up variable spawner
 func _process(delta):
 	if spawner == null: # For some reason this only works here, not before)
 		spawner = get_tree().current_scene.find_child("Spawner", true) # Finds the spawner node
+	
+	if spawner == null:
+		return
+	
 	var Difficulty = spawner._current_difficulty # Fetches the current difficulty variable from spawner 
 	var rotation_speed = rotation_speed_base * (pow(acceleration,Difficulty))
 	rotation += rotation_speed * delta
