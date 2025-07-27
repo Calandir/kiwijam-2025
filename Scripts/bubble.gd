@@ -5,6 +5,7 @@ extends RigidBody2D
 @export var our_gravity_scale: float = 0.1;
 @export var _connectionHitbox: Area2D;
 @export var _spawnOnCombo: Array[PackedScene]
+@export var _showWhenFalling: Array[Node2D]
 @export var max_velocity: float = 750.0 
 
 enum BubbleType
@@ -53,6 +54,10 @@ func set_state(state: BubbleState, new_parent: Node2D):
 	
 	match state:
 		BubbleState.Stuck:
+			if is_instance_valid(self):
+				for x in _showWhenFalling:
+					x.visible = false
+				
 			# Extra check, avoid exception if cyclic reparenting
 			if not is_ancestor_of(new_parent):
 				reparent(new_parent)

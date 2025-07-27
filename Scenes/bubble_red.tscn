@@ -10,7 +10,7 @@ radius = 40.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_amq2t"]
 radius = 60.0
 
-[node name="RigidBody2D2" type="RigidBody2D" node_paths=PackedStringArray("_connectionHitbox")]
+[node name="RigidBody2D2" type="RigidBody2D" node_paths=PackedStringArray("_connectionHitbox", "_showWhenFalling")]
 mass = 3.0
 gravity_scale = 0.0
 contact_monitor = true
@@ -19,6 +19,7 @@ script = ExtResource("1_thccm")
 our_gravity_scale = 0.01
 _connectionHitbox = NodePath("LargerArea2D")
 _spawnOnCombo = Array[PackedScene]([ExtResource("2_gfwg6")])
+_showWhenFalling = [NodePath("Fire_Effect")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uj1bi")
@@ -31,3 +32,7 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LargerArea2D"]
 shape = SubResource("CircleShape2D_amq2t")
+
+[node name="Fire_Effect" parent="." instance=ExtResource("2_gfwg6")]
+position = Vector2(4, -36)
+is_enabled = false

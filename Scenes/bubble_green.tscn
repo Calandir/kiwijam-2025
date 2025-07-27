@@ -10,7 +10,7 @@ radius = 40.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_amq2t"]
 radius = 60.0
 
-[node name="RigidBody2D" type="RigidBody2D" node_paths=PackedStringArray("_connectionHitbox")]
+[node name="RigidBody2D" type="RigidBody2D" node_paths=PackedStringArray("_connectionHitbox", "_showWhenFalling")]
 mass = 3.0
 gravity_scale = 0.0
 contact_monitor = true
@@ -20,6 +20,7 @@ type = 3
 our_gravity_scale = 0.01
 _connectionHitbox = NodePath("LargerArea2D")
 _spawnOnCombo = Array[PackedScene]([ExtResource("2_bgwgk")])
+_showWhenFalling = [NodePath("Leaf_Effect")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uj1bi")
@@ -32,3 +33,6 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LargerArea2D"]
 shape = SubResource("CircleShape2D_amq2t")
+
+[node name="Leaf_Effect" parent="." instance=ExtResource("2_bgwgk")]
+is_enabled = false
