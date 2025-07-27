@@ -28,9 +28,9 @@ zoom = Vector2(0.5, 0.5)
 script = ExtResource("3_r36mj")
 game_state = NodePath("../GameState")
 
-[node name="Area2D" type="StaticBody2D" parent="Center"]
+[node name="CenterArea2D" type="StaticBody2D" parent="Center"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center/CenterArea2D"]
 shape = SubResource("CircleShape2D_uj1bi")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Center"]

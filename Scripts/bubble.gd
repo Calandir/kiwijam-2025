@@ -25,9 +25,14 @@ var _sfxPlayer: Node
 
 var _spawnFrame: int
 
+static var s_center: Node2D
+
 func _ready():
 	body_entered.connect(on_collision)
 	_sfxPlayer = get_tree().current_scene.find_child("SFXPlayer", true)
+	
+	if not s_center:
+		s_center = get_tree().current_scene.find_child("Center", true)
 	
 	_spawnFrame = Engine.get_frames_drawn()
 	set_state(BubbleState.Falling, null)
@@ -57,25 +62,36 @@ func set_state(state: BubbleState, new_parent: Node2D):
 				for x in _showWhenFalling:
 					x.visible = false
 				
-			# Extra check, avoid exception if cyclic reparenting
-			if not is_ancestor_of(new_parent):
-				reparent(new_parent)
-				freeze = true
-			else:
-				queue_free()
+			reparent(new_parent)
+			freeze = true
 			
-			# HACK: Don't actualy use _overflow_border, sometimes it returned False unexpectedly
+			# HACK: Don't actually use _overflow_border, sometimes it returned False unexpectedly
 			var is_game_over: bool = self.global_position.distance_to(Vector2.ZERO) > 875
 			if is_game_over and is_inside_tree():
 				var game_state = get_tree().current_scene.find_child("GameState", true)
 				if game_state != null:
 					game_state.set_game_over()
+					
 		BubbleState.Falling:
 			if previous_state == BubbleState.Stuck:
 				reparent(new_parent)
 				freeze = false
 
 func on_collision(body: Node):
+	var has_hit_center = body.name == "CenterArea2D"
+	var has_hit_stuck_bubble = body is Bubble and body._currentState == BubbleState.Stuck
+
+	if not has_hit_center and not has_hit_stuck_bubble:
+		return
+		
+	# call_deferred() required to freeze physics at end of frame
+	(func(): self.set_state(BubbleState.Stuck, s_center)).call_deferred()
+	
+	
+
+# OLD STUFF BELOW
+
+func on_collision_old(body: Node):
 	if _currentState == BubbleState.Stuck:
 		return
 	
