@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://b7tyd8vaw2bo0" path="res://Art/title.png" id="7_7wn6m"]
 [ext_resource type="AudioStream" uid="uid://d2keitfm22wlb" path="res://Audio/title.ogg" id="8_2ppl1"]
 [ext_resource type="Texture2D" uid="uid://dd0iyjemw80ic" path="res://Art/credits.png" id="9_nny74"]
-[ext_resource type="Script" path="res://Scenes/credits.gd" id="10_7wn6m"]
+[ext_resource type="Script" uid="uid://hxj3sdl817iw" path="res://Scenes/credits.gd" id="10_7wn6m"]
 [ext_resource type="Texture2D" uid="uid://cvr12xvp28xtj" path="res://Art/instructions.png" id="10_ogfep"]
-[ext_resource type="PackedScene" uid="uid://b8jfnc0klgfw4" path="res://Scenes/sfx_player.tscn" id="10_ubx1x"]
-[ext_resource type="Script" path="res://Scenes/instructions.gd" id="11_7wn6m"]
+[ext_resource type="PackedScene" path="res://Scenes/sfx_player.tscn" id="10_ubx1x"]
+[ext_resource type="Script" uid="uid://tkl8uruvl1j6" path="res://Scenes/instructions.gd" id="11_7wn6m"]
 
 [node name="TashMenu" type="Node2D"]
 
