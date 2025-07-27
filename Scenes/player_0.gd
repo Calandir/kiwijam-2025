@@ -11,6 +11,11 @@ var duration = 1.0  # seconds
 
 
 func _on_button_pressed():
+	var _bgmPlayer = get_tree().current_scene.find_child("BGMPlayer", true)
+	_bgmPlayer.volume_db = -5
+	var _sfxPlayer = get_tree().current_scene.find_child("SFXPlayer", true)
+	_sfxPlayer.play_spell_sfx()
+
 	increase_rotation_speed_over_time(target_speed, duration)
 	var tween = create_tween()
 	# Animate position to the left
@@ -22,8 +27,8 @@ func _on_button_pressed():
 	tween.tween_property(self, "scale", self.scale * 0.7, 0.5) \
 	.set_trans(Tween.TRANS_SINE) \
 	.set_ease(Tween.EASE_OUT)
-	
-	tween.tween_property(self, "modulate", Color(1, 0.9, 0.7, 1), 1.0)
+	tween.tween_property(self, "modulate", Color(0.5, 0.8, 1, 1), 0.5)
+	tween.tween_property(self, "modulate", Color(0, 0, 0, 0), 0.5)
 
 func increase_rotation_speed_over_time(target: float, time: float) -> void:
 	var start_speed = rotation_speed

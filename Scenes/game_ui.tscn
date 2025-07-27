@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dali6f8g5gje3"]
+[gd_scene load_steps=3 format=3 uid="uid://dpsq5vg6b7bf3"]
 
 [ext_resource type="FontFile" uid="uid://clcsxsgj4qspl" path="res://Fonts/POORICH.TTF" id="2_bw2rt"]
-[ext_resource type="Script" uid="uid://d24hr5t1vmtre" path="res://Scripts/score_label.gd" id="2_xjnnq"]
+[ext_resource type="Script" path="res://Scripts/score_label.gd" id="2_xjnnq"]
 
 [node name="GameUIRoot" type="Node2D"]
 
@@ -9,6 +9,7 @@
 
 [node name="Scaler" type="Control" parent="CanvasLayer"]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
