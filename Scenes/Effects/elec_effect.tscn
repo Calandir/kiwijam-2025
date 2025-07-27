@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1al0oq1k8h3o"]
+[gd_scene load_steps=13 format=3 uid="uid://b1al0oq1k8h3o"]
 
 [ext_resource type="Texture2D" uid="uid://cvl3bpq2c58qc" path="res://Art/Elec_Sprite3.png" id="1_6f1dv"]
-[ext_resource type="Script" uid="uid://dsjwqc42m8wp1" path="res://Scripts/destroy_soon.gd" id="2_iu1cv"]
+[ext_resource type="Script" path="res://Scripts/destroy_soon.gd" id="2_iu1cv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u12r4"]
 atlas = ExtResource("1_6f1dv")
@@ -10,10 +10,6 @@ region = Rect2(0, 0, 750, 750)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dckuv"]
 atlas = ExtResource("1_6f1dv")
 region = Rect2(750, 0, 750, 750)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3njn"]
-atlas = ExtResource("1_6f1dv")
-region = Rect2(1500, 0, 750, 750)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4q37"]
 atlas = ExtResource("1_6f1dv")
@@ -27,18 +23,6 @@ region = Rect2(750, 750, 750, 750)
 atlas = ExtResource("1_6f1dv")
 region = Rect2(1500, 750, 750, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ddvn"]
-atlas = ExtResource("1_6f1dv")
-region = Rect2(0, 1500, 750, 750)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c2n2v"]
-atlas = ExtResource("1_6f1dv")
-region = Rect2(750, 1500, 750, 750)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqrr1"]
-atlas = ExtResource("1_6f1dv")
-region = Rect2(1500, 1500, 750, 750)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_je6xw"]
 atlas = ExtResource("1_6f1dv")
 region = Rect2(0, 2250, 750, 750)
@@ -51,17 +35,9 @@ region = Rect2(750, 2250, 750, 750)
 atlas = ExtResource("1_6f1dv")
 region = Rect2(1500, 2250, 750, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fyulp"]
-atlas = ExtResource("1_6f1dv")
-region = Rect2(0, 3000, 750, 750)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3xbh"]
 atlas = ExtResource("1_6f1dv")
 region = Rect2(750, 3000, 750, 750)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s0he1"]
-atlas = ExtResource("1_6f1dv")
-region = Rect2(1500, 3000, 750, 750)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sc2qg"]
 animations = [{
@@ -73,9 +49,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_dckuv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t3njn")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_j4q37")
 }, {
 "duration": 1.0,
@@ -83,15 +56,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m8mry")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ddvn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c2n2v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gqrr1")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_je6xw")
@@ -103,17 +67,11 @@ animations = [{
 "texture": SubResource("AtlasTexture_648ur")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fyulp")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_e3xbh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s0he1")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Elec_Effect" type="AnimatedSprite2D"]

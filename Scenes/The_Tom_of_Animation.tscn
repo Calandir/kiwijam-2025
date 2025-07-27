@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ble3xrfucqi74"]
+[gd_scene load_steps=38 format=3 uid="uid://ble3xrfucqi74"]
 
 [ext_resource type="Shader" uid="uid://ccu7x2keeeta8" path="res://Shaders/Fire_Shader.tres" id="1_qmgqy"]
 [ext_resource type="Texture2D" uid="uid://b4tvepgja7j5s" path="res://Art/Textures/T_Gradient_circle22.jpg" id="2_eiarl"]
@@ -51,14 +51,6 @@ shader_parameter/Colour = SubResource("GradientTexture1D_jpwe8")
 atlas = ExtResource("7_mamsu")
 region = Rect2(0, 0, 750, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dckuv"]
-atlas = ExtResource("7_mamsu")
-region = Rect2(750, 0, 750, 750)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3njn"]
-atlas = ExtResource("7_mamsu")
-region = Rect2(1500, 0, 750, 750)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4q37"]
 atlas = ExtResource("7_mamsu")
 region = Rect2(0, 750, 750, 750)
@@ -71,17 +63,9 @@ region = Rect2(750, 750, 750, 750)
 atlas = ExtResource("7_mamsu")
 region = Rect2(1500, 750, 750, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ddvn"]
-atlas = ExtResource("7_mamsu")
-region = Rect2(0, 1500, 750, 750)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2n2v"]
 atlas = ExtResource("7_mamsu")
 region = Rect2(750, 1500, 750, 750)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqrr1"]
-atlas = ExtResource("7_mamsu")
-region = Rect2(1500, 1500, 750, 750)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_je6xw"]
 atlas = ExtResource("7_mamsu")
@@ -91,10 +75,6 @@ region = Rect2(0, 2250, 750, 750)
 atlas = ExtResource("7_mamsu")
 region = Rect2(750, 2250, 750, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_648ur"]
-atlas = ExtResource("7_mamsu")
-region = Rect2(1500, 2250, 750, 750)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyulp"]
 atlas = ExtResource("7_mamsu")
 region = Rect2(0, 3000, 750, 750)
@@ -103,21 +83,11 @@ region = Rect2(0, 3000, 750, 750)
 atlas = ExtResource("7_mamsu")
 region = Rect2(750, 3000, 750, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s0he1"]
-atlas = ExtResource("7_mamsu")
-region = Rect2(1500, 3000, 750, 750)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_sc2qg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u12r4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dckuv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t3njn")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j4q37")
@@ -129,13 +99,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_m8mry")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6ddvn")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_c2n2v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gqrr1")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_je6xw")
@@ -144,25 +108,19 @@ animations = [{
 "texture": SubResource("AtlasTexture_1yae6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_648ur")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_fyulp")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e3xbh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s0he1")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_dpsmm"]
-offsets = PackedFloat32Array(0, 0.172131, 0.516393, 0.786885, 0.909836, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0.486275, 0, 0.596078, 1, 1, 0, 1, 1, 0.935731, 0, 0.949468, 1, 0.923893, 0, 0.94016, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.344262, 0.786885)
+colors = PackedColorArray(0, 0, 0, 0, 0.268385, 0.000203208, 0.333959, 1, 0.923893, 0, 0.94016, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j2ait"]
 gradient = SubResource("Gradient_dpsmm")
@@ -170,7 +128,7 @@ gradient = SubResource("Gradient_dpsmm")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dif1v"]
 shader = ExtResource("15_ifnwi")
 shader_parameter/Scals = Vector2(1, 1)
-shader_parameter/Speed = Vector2(0.5, 0.5)
+shader_parameter/Speed = Vector2(0.1, 0.1)
 shader_parameter/Texture1 = ExtResource("17_iosok")
 shader_parameter/Base_Glow = ExtResource("4_lsxrt")
 shader_parameter/Fire_Shape = ExtResource("16_6gmfk")
@@ -199,7 +157,7 @@ z_index = 1
 position = Vector2(-91, 5)
 scale = Vector2(0.142833, 0.1295)
 sprite_frames = SubResource("SpriteFrames_sc2qg")
-frame_progress = 0.998948
+frame_progress = 0.239891
 
 [node name="Leaf_Orb" type="Sprite2D" parent="."]
 position = Vector2(-58, 173)
