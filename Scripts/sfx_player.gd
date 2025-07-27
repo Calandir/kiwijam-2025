@@ -42,3 +42,7 @@ func play_sfx(audio_stream: AudioStream, volume_db: float = 0.0):
 
 func _on_button_mouse_entered() -> void:
 	play_sparkle_sfx()
+	var particles = get_parent().get_node("HoverParticles")
+	particles.position = get_viewport().get_mouse_position()
+	particles.emitting = true
+	

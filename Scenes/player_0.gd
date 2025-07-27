@@ -7,7 +7,7 @@ func _process(delta):
 	rotation += rotation_speed * delta
 
 var target_speed = 10  # final speed
-var duration = 1.0  # seconds
+var duration = 0.6  # seconds
 
 
 func _on_button_pressed():
@@ -19,16 +19,16 @@ func _on_button_pressed():
 	increase_rotation_speed_over_time(target_speed, duration)
 	var tween = create_tween()
 	# Animate position to the left
-	tween.tween_property(self, "position", self.position + Vector2(-192, -68), 0.3) \
+	tween.tween_property(self, "position", self.position + Vector2(-192, -68), 0.5) \
 	.set_trans(Tween.TRANS_SINE) \
 	.set_ease(Tween.EASE_OUT)
 
 	# Animate scale down slightly
-	tween.tween_property(self, "scale", self.scale * 0.7, 0.5) \
+	tween.tween_property(self, "scale", self.scale * 0.7, 0.2) \
 	.set_trans(Tween.TRANS_SINE) \
 	.set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "modulate", Color(0.5, 0.8, 1, 1), 0.5)
-	tween.tween_property(self, "modulate", Color(0, 0, 0, 0), 0.5)
+	tween.tween_property(self, "modulate", Color(0.5, 0.8, 1, 1), 0.1)
+	tween.tween_property(self, "modulate", Color(0.1, 0.1, 0.1, 0.1), 0.2)
 
 func increase_rotation_speed_over_time(target: float, time: float) -> void:
 	var start_speed = rotation_speed

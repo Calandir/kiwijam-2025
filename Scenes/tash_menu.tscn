@@ -143,6 +143,32 @@ parameters/looping = true
 
 [node name="SFXPlayer" parent="." instance=ExtResource("10_ubx1x")]
 
+[node name="HoverParticles" type="CPUParticles2D" parent="."]
+modulate = Color(0.54559, 0.486797, 0, 1)
+z_index = -1
+scale = Vector2(1.42857, 1.42857)
+emitting = false
+amount = 10
+lifetime = 0.7
+one_shot = true
+speed_scale = 1.1
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(50, -50)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+angle_min = -50.0
+angle_max = 50.0
+scale_amount_max = 3.0
+anim_offset_max = 1.0
+
 [connection signal="mouse_entered" from="ButtonStart/Button" to="SFXPlayer" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ButtonStart/Button" to="Player0" method="_on_button_pressed"]
 [connection signal="mouse_entered" from="ButtonInstructions/openButtonInstructions" to="SFXPlayer" method="_on_button_mouse_entered"]
