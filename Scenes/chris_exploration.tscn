@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ccmcv64tkxgkh" path="res://Scenes/overflow_border.tscn" id="6_uj86v"]
 [ext_resource type="PackedScene" uid="uid://k5vvnewcxddd" path="res://Scenes/game_over_root.tscn" id="7_uj86v"]
 [ext_resource type="PackedScene" path="res://Scenes/sfx_player.tscn" id="9_5i8yc"]
-[ext_resource type="PackedScene" uid="uid://dali6f8g5gje3" path="res://Scenes/game_ui.tscn" id="11_flaj5"]
+[ext_resource type="PackedScene" path="res://Scenes/game_ui.tscn" id="11_flaj5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 306.163
