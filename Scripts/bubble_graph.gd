@@ -20,11 +20,11 @@ func remove(bubbles: Array[Bubble]):
 	
 	_rebuild()
 	
-func get_matches_of(bubble: Bubble) -> Array[Bubble]:
+func get_matches_of(bubble: Bubble, filter: Callable) -> Array[Bubble]:
 	var search_root: BubbleGraphNode = _bubbles[bubble]
 	
 	var searched: Array[BubbleGraphNode] = []
-	search_root.add_matches(searched)
+	search_root.add_matches(searched, filter)
 	
 	var results: Array[Bubble] = []
 	for result in searched:
@@ -66,10 +66,14 @@ class BubbleGraphNode:
 		self._connections.append(other_graph_node)
 		other_graph_node._connections.append(self)
 	
-	func add_matches(already_matched: Array[BubbleGraphNode]):
+	func add_matches(already_matched: Array[BubbleGraphNode], filter: Callable):
 		if already_matched.has(self):
 			return
+		
+		if not filter.call(_bubble):
+			return
+		
 		already_matched.append(self)
 		
 		for connection in _connections:
-			connection.add_matches(already_matched)
+			connection.add_matches(already_matched, filter)

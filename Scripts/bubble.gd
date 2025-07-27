@@ -101,7 +101,7 @@ func on_collision(body: Node):
 	
 	s_graph.add(self)
 	
-	var all_matches = s_graph.get_matches_of(self)
+	var all_matches = s_graph.get_matches_of(self, func(bubble): return bubble.type == self.type)
 	if len(all_matches) < 3:
 		return
 	
