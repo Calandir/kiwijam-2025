@@ -22,14 +22,21 @@ var _currentState: BubbleState
 var _overflowBorder: Area2D
 var _sfxPlayer: Node
 
+var _spawnFrame: int
+
 func _ready():
 	body_entered.connect(on_collision)
 	_overflowBorder = get_tree().current_scene.find_child("OverflowBorder", true)
 	_sfxPlayer = get_tree().current_scene.find_child("SFXPlayer", true)
 	
+	_spawnFrame = Engine.get_frames_drawn()
 	set_state(BubbleState.Falling, null)
 
 func _process(delta):
+	# Hack to clean up distant satellites
+	if Engine.get_frames_drawn() > _spawnFrame + 300 and position.length_squared() > 1200 * 1200:
+		queue_free()
+	
 	# Center is 0, 0
 	var vector_to_center = -1 * global_position
 	
@@ -50,6 +57,8 @@ func set_state(state: BubbleState, new_parent: Node2D):
 			if not is_ancestor_of(new_parent):
 				reparent(new_parent)
 				freeze = true
+			else:
+				queue_free()
 			
 			# HACK: Don't actualy use _overflow_border, sometimes it returned False unexpectedly
 			var is_game_over: bool = self.global_position.distance_to(Vector2.ZERO) > 875
