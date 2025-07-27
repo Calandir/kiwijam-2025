@@ -24,7 +24,9 @@ var _overflowBorder: Area2D
 var _sfxPlayer: Node
 
 var _spawnFrame: int
+var _lastStateChangedFrame: int = -1
 
+static var s_graph: BubbleGraph = BubbleGraph.new()
 static var s_center: Node2D
 
 func _ready():
@@ -78,16 +80,36 @@ func set_state(state: BubbleState, new_parent: Node2D):
 				freeze = false
 
 func on_collision(body: Node):
-	var has_hit_center = body.name == "CenterArea2D"
+	if _currentState != BubbleState.Falling:
+		return
+	
 	var has_hit_stuck_bubble = body is Bubble and body._currentState == BubbleState.Stuck
+	var has_hit_center = body.name == "CenterArea2D"
 
 	if not has_hit_center and not has_hit_stuck_bubble:
 		return
-		
+	
+	# It's possible to collide with two objects in the same frame
+	# If that happens, only run match logic once
+	var has_already_processed = _lastStateChangedFrame == Engine.get_frames_drawn()
+	if has_already_processed:
+		return
+	_lastStateChangedFrame = Engine.get_frames_drawn()
+	
 	# call_deferred() required to freeze physics at end of frame
 	(func(): self.set_state(BubbleState.Stuck, s_center)).call_deferred()
 	
+	s_graph.add(self)
 	
+	var all_matches = s_graph.get_matches_of(self)
+	if len(all_matches) < 3:
+		return
+	
+	s_graph.remove(all_matches)
+	
+	for x in all_matches:
+		x._play_effect()
+		x.queue_free()
 
 # OLD STUFF BELOW
 
