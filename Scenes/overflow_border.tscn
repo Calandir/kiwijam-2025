@@ -1,17 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccmcv64tkxgkh"]
+[gd_scene load_steps=3 format=3 uid="uid://ccmcv64tkxgkh"]
 
 [ext_resource type="Texture2D" uid="uid://basnn0kbyniyb" path="res://Art/border.png" id="1_1jtr1"]
 [ext_resource type="Script" uid="uid://drfktkrkco6rq" path="res://Scenes/border.gd" id="2_efaj3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_uj86v"]
-radius = 828.58
-
-[node name="OverflowBorder" type="Area2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_uj86v")
-
-[node name="Border" type="Sprite2D" parent="."]
+[node name="Border" type="Sprite2D"]
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("1_1jtr1")
 script = ExtResource("2_efaj3")

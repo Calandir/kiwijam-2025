@@ -27,7 +27,6 @@ var _spawnFrame: int
 
 func _ready():
 	body_entered.connect(on_collision)
-	_overflowBorder = get_tree().current_scene.find_child("OverflowBorder", true)
 	_sfxPlayer = get_tree().current_scene.find_child("SFXPlayer", true)
 	
 	_spawnFrame = Engine.get_frames_drawn()
