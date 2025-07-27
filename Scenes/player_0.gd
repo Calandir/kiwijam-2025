@@ -11,6 +11,11 @@ var duration = 1.0  # seconds
 
 
 func _on_button_pressed():
+	var _bgmPlayer = get_tree().current_scene.find_child("BGMPlayer", true)
+	_bgmPlayer.volume_db = -5
+	var _sfxPlayer = get_tree().current_scene.find_child("SFXPlayer", true)
+	_sfxPlayer.play_spell_sfx()
+
 	increase_rotation_speed_over_time(target_speed, duration)
 	var tween = create_tween()
 	# Animate position to the left
