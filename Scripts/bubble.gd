@@ -96,7 +96,7 @@ func on_collision(body: Node):
 		
 		var game_state = get_tree().current_scene.find_child("GameState", true)
 		if game_state != null:
-			game_state.add_score(len(all_matches) * 3)
+			game_state.add_score(len(all_matches) * len(all_matches))
 
 func _play_effect():
 	if not is_inside_tree():
