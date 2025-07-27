@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1al0oq1k8h3o"]
+[gd_scene load_steps=14 format=3 uid="uid://b1al0oq1k8h3o"]
 
 [ext_resource type="Texture2D" uid="uid://cvl3bpq2c58qc" path="res://Art/Elec_Sprite3.png" id="1_6f1dv"]
-[ext_resource type="Script" path="res://Scripts/destroy_soon.gd" id="2_iu1cv"]
+[ext_resource type="Script" uid="uid://dsjwqc42m8wp1" path="res://Scripts/destroy_soon.gd" id="2_iu1cv"]
+[ext_resource type="Texture2D" uid="uid://cobii24jg5q8i" path="res://Art/particle6.png" id="3_0sf3s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u12r4"]
 atlas = ExtResource("1_6f1dv")
@@ -79,5 +80,20 @@ z_index = 1
 scale = Vector2(0.142833, 0.1295)
 sprite_frames = SubResource("SpriteFrames_sc2qg")
 autoplay = "default"
-frame_progress = 0.998948
+frame_progress = 0.505636
+script = ExtResource("2_iu1cv")
+
+[node name="Leaf_Effect" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-4.65661e-10, 0.171184)
+amount = 10
+texture = ExtResource("3_0sf3s")
+lifetime_randomness = 0.2
+direction = Vector2(0, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
 script = ExtResource("2_iu1cv")
