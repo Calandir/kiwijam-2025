@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmkqbwkr7kd8e"]
+[gd_scene load_steps=14 format=3 uid="uid://bmkqbwkr7kd8e"]
 
 [ext_resource type="Texture2D" uid="uid://dib5sldoon5nn" path="res://Art/background.png" id="1_s82d0"]
 [ext_resource type="Texture2D" uid="uid://cafqmaaaaot2n" path="res://Art/player0.png" id="2_2ppl1"]
@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://cjlwy7m46ek65" path="res://Art/button_credits.png" id="6_ogfep"]
 [ext_resource type="Texture2D" uid="uid://b7tyd8vaw2bo0" path="res://Art/title.png" id="7_7wn6m"]
 [ext_resource type="AudioStream" uid="uid://d2keitfm22wlb" path="res://Audio/title.ogg" id="8_2ppl1"]
+[ext_resource type="Texture2D" uid="uid://dd0iyjemw80ic" path="res://Art/credits.png" id="9_nny74"]
+[ext_resource type="Script" uid="uid://hxj3sdl817iw" path="res://Scenes/credits.gd" id="10_7wn6m"]
+[ext_resource type="Texture2D" uid="uid://cvr12xvp28xtj" path="res://Art/instructions.png" id="10_ogfep"]
+[ext_resource type="Script" uid="uid://tkl8uruvl1j6" path="res://Scenes/instructions.gd" id="11_7wn6m"]
+
+[sub_resource type="GDScript" id="GDScript_7rp6t"]
+script/source = "extends Sprite2D
+"
 
 [node name="TashMenu" type="Node2D"]
 
@@ -45,20 +53,37 @@ position = Vector2(411, 521.5)
 texture = ExtResource("4_ubx1x")
 
 [node name="Button" type="Button" parent="ButtonStart"]
-offset_left = -174.0
-offset_top = -33.0
-offset_right = 181.0
-offset_bottom = 36.0
+offset_left = -187.0
+offset_top = -45.0
+offset_right = 192.0
+offset_bottom = 46.0
 focus_mode = 0
 flat = true
 
 [node name="ButtonInstructions" type="Sprite2D" parent="."]
 position = Vector2(355, 629.5)
 texture = ExtResource("5_nny74")
+script = SubResource("GDScript_7rp6t")
+
+[node name="openButtonInstructions" type="Button" parent="ButtonInstructions"]
+offset_left = -129.0
+offset_top = -47.0
+offset_right = 119.0
+offset_bottom = 43.0
+focus_mode = 0
+flat = true
 
 [node name="ButtonCredits" type="Sprite2D" parent="."]
 position = Vector2(387, 727.5)
 texture = ExtResource("6_ogfep")
+
+[node name="openButtonCredits" type="Button" parent="ButtonCredits"]
+offset_left = -159.0
+offset_top = -39.0
+offset_right = 167.0
+offset_bottom = 47.0
+focus_mode = 0
+flat = true
 
 [node name="Title" type="Sprite2D" parent="."]
 position = Vector2(532, 365.5)
@@ -69,4 +94,44 @@ stream = ExtResource("8_2ppl1")
 autoplay = true
 parameters/looping = true
 
+[node name="credits" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(611, 596)
+texture = ExtResource("9_nny74")
+script = ExtResource("10_7wn6m")
+
+[node name="closeButtonCredits" type="Button" parent="credits"]
+z_index = 2
+anchors_preset = -1
+anchor_left = 0.703
+anchor_top = 0.118
+anchor_right = 0.826
+anchor_bottom = 0.249
+offset_left = -500.0
+offset_top = -500.0
+offset_right = -461.0
+offset_bottom = -490.0
+focus_mode = 0
+flat = true
+
+[node name="instructions" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(611, 596)
+texture = ExtResource("10_ogfep")
+script = ExtResource("11_7wn6m")
+
+[node name="closeButtonInstructions" type="Button" parent="instructions"]
+offset_left = 212.0
+offset_top = -375.0
+offset_right = 340.0
+offset_bottom = -236.0
+focus_mode = 0
+flat = true
+
 [connection signal="pressed" from="ButtonStart/Button" to="Player0" method="_on_button_pressed"]
+[connection signal="pressed" from="ButtonInstructions/openButtonInstructions" to="instructions" method="_on_open_button_instructions_pressed"]
+[connection signal="pressed" from="ButtonCredits/openButtonCredits" to="credits" method="_on_open_button_credits_pressed"]
+[connection signal="pressed" from="credits/closeButtonCredits" to="credits" method="_on_close_button_credits_pressed"]
+[connection signal="pressed" from="instructions/closeButtonInstructions" to="instructions" method="_on_close_button_instructions_pressed"]
