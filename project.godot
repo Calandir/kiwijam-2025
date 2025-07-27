@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="kiwijam-2025"
-run/main_scene="uid://bmkqbwkr7kd8e"
+run/main_scene="uid://xto32kijwviv"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://Art/icon.svg"
 
