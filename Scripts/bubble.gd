@@ -5,6 +5,7 @@ extends RigidBody2D
 @export var our_gravity_scale: float = 0.1;
 @export var _connectionHitbox: Area2D;
 @export var _spawnOnCombo: Array[PackedScene]
+@export var max_velocity: float = 750.0 
 
 enum BubbleType
 {
@@ -34,6 +35,10 @@ func _process(delta):
 	
 	if _currentState == BubbleState.Falling:
 		add_constant_force(vector_to_center * our_gravity_scale)
+		
+		# Limit velocity
+		if linear_velocity.length() > max_velocity:
+			linear_velocity = linear_velocity.normalized() * max_velocity
 
 func set_state(state: BubbleState, new_parent: Node2D):
 	var previous_state: BubbleState = _currentState

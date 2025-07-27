@@ -17,7 +17,7 @@ contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_ygsoe")
 type = 4
-our_gravity_scale = 0.05
+our_gravity_scale = 0.01
 _connectionHitbox = NodePath("LargerArea2D")
 _spawnOnCombo = Array[PackedScene]([ExtResource("2_i3jso")])
 
