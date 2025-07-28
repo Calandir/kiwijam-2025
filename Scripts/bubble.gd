@@ -102,9 +102,6 @@ func on_collision(body: Node):
 		return
 	_lastStateChangedFrame = Engine.get_frames_drawn()
 	
-	# call_deferred() required to freeze physics at end of frame
-	(func(): self.set_state(BubbleState.Stuck, s_center)).call_deferred()
-	
 	s_graph.add(self)
 	
 	var all_matches = s_graph.get_matches_of(self, func(bubble): return bubble.type == self.type)
@@ -113,6 +110,9 @@ func on_collision(body: Node):
 			_sfxPlayer.play_miss_sfx()
 		else:
 			_sfxPlayer.play_connect_sfx()
+			
+		# call_deferred() required to freeze physics at end of frame
+		(func(): self.set_state(BubbleState.Stuck, s_center)).call_deferred()
 		return
 	
 	_sfxPlayer.play_spell_sfx()
