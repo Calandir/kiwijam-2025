@@ -40,10 +40,6 @@ func get_orphans() -> Array[BubbleGraphNode]:
 	
 	return result_nodes
 
-func count_groups():
-	var groups = _get_groups_in_list(_graphNodes)
-	print(len(groups))
-
 func _get_groups_in_list(input_list: Array[BubbleGraphNode]):
 	var result_groups = []
 	var searched = []
@@ -63,7 +59,8 @@ func _rebuild():
 	_graphNodes.clear()
 	
 	for bubble in _bubbles:
-		if bubble is not Bubble:
+		if not is_instance_valid(bubble):
+			print("Invalid instance in _rebuild()")
 			continue
 		
 		var new_graph_node = BubbleGraphNode.new(bubble)
