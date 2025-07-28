@@ -106,8 +106,14 @@ func on_collision(body: Node):
 	
 	var all_matches = s_graph.get_matches_of(self, func(bubble): return bubble.type == self.type)
 	if len(all_matches) < 3:
+		if has_hit_center and len(all_matches) == 1:
+			_sfxPlayer.play_miss_sfx()
+		else:
+			_sfxPlayer.play_connect_sfx()
 		return
 	
+	_sfxPlayer.play_spell_sfx()
+
 	s_graph.remove(all_matches)
 	
 	var orphans = s_graph.get_orphans()
@@ -118,6 +124,9 @@ func on_collision(body: Node):
 		x._bubble._play_effect()
 		x._bubble.queue_free()
 
+	var game_state = get_tree().current_scene.find_child("GameState", true)
+	if game_state != null:
+		game_state.add_score(len(all_matches) * len(all_matches))
 # OLD STUFF BELOW
 
 func on_collision_old(body: Node):
