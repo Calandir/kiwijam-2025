@@ -26,6 +26,8 @@ var _sfxPlayer: Node
 var _spawnFrame: int
 var _lastStateChangedFrame: int = -1
 
+var _needs_physics_reset: bool = false
+
 static var s_graph: BubbleGraph = BubbleGraph.new()
 static var s_center: Node2D
 
@@ -54,6 +56,14 @@ func _process(delta):
 		if linear_velocity.length() > max_velocity:
 			linear_velocity = linear_velocity.normalized() * max_velocity
 
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if _needs_physics_reset:
+		linear_velocity = Vector2.ZERO
+		angular_velocity = 0
+		# Hack, bubble needs to get going faster
+		our_gravity_scale = 0.5
+		
+	
 func set_state(state: BubbleState, new_parent: Node2D):
 	var previous_state: BubbleState = _currentState
 	_currentState = state
@@ -78,6 +88,7 @@ func set_state(state: BubbleState, new_parent: Node2D):
 			if previous_state == BubbleState.Stuck:
 				reparent(new_parent)
 				freeze = false
+				_needs_physics_reset = true
 
 func on_collision(body: Node):
 	if is_queued_for_deletion():
