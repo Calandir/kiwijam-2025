@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfa5sk8a30v3b"]
+[gd_scene load_steps=8 format=3 uid="uid://cfa5sk8a30v3b"]
 
 [ext_resource type="Script" uid="uid://qoh4uiogmk5j" path="res://Scripts/debug_input_listener.gd" id="1_ol5gq"]
 [ext_resource type="PackedScene" uid="uid://dsfk1dptno0a7" path="res://Scenes/bubble_red.tscn" id="2_2mhth"]
 [ext_resource type="PackedScene" uid="uid://vudpsltxfds" path="res://Scenes/bubble_blue.tscn" id="3_hei6d"]
+[ext_resource type="PackedScene" uid="uid://dutcisgwapw5c" path="res://Scenes/bubble_green.tscn" id="4_cw6t1"]
+[ext_resource type="PackedScene" uid="uid://kikbop3abrkk" path="res://Scenes/bubble_yellow.tscn" id="5_n7ej4"]
+[ext_resource type="PackedScene" uid="uid://psjdht47j6ot" path="res://Scenes/bubble_purple.tscn" id="6_5trkm"]
+[ext_resource type="PackedScene" uid="uid://bs3rfelf7hmbf" path="res://Scenes/bubble_brown.tscn" id="7_cdjoh"]
 
 [node name="DebugInputListener" type="Node2D"]
 script = ExtResource("1_ol5gq")
 _spawn_template_red = ExtResource("2_2mhth")
 _spawn_template_blue = ExtResource("3_hei6d")
+_spawn_template_green = ExtResource("4_cw6t1")
+_spawn_template_yellow = ExtResource("5_n7ej4")
+_spawn_template_purple = ExtResource("6_5trkm")
+_spawn_template_brown = ExtResource("7_cdjoh")

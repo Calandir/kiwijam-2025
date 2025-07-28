@@ -6,9 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://dmlis47shos5t" path="res://Audio/bgm.ogg" id="4_r36mj"]
 [ext_resource type="Script" uid="uid://bym5itbp8q83f" path="res://Scripts/spawner.gd" id="4_y1jy2"]
 [ext_resource type="PackedScene" uid="uid://dew32pop3u3px" path="res://Scenes/fullscreen_background.tscn" id="5_r36mj"]
-[ext_resource type="PackedScene" uid="uid://ux51ya123dil" path="res://Scenes/overflow_border.tscn" id="6_uj86v"]
+[ext_resource type="PackedScene" uid="uid://ccmcv64tkxgkh" path="res://Scenes/overflow_border.tscn" id="6_uj86v"]
 [ext_resource type="PackedScene" uid="uid://k5vvnewcxddd" path="res://Scenes/game_over_root.tscn" id="7_uj86v"]
-[ext_resource type="PackedScene" path="res://Scenes/sfx_player.tscn" id="9_5i8yc"]
+[ext_resource type="PackedScene" uid="uid://b8jfnc0klgfw4" path="res://Scenes/sfx_player.tscn" id="9_5i8yc"]
 [ext_resource type="PackedScene" uid="uid://dpsq5vg6b7bf3" path="res://Scenes/game_ui.tscn" id="11_flaj5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
@@ -28,9 +28,9 @@ zoom = Vector2(0.5, 0.5)
 script = ExtResource("3_r36mj")
 game_state = NodePath("../GameState")
 
-[node name="Area2D" type="StaticBody2D" parent="Center"]
+[node name="CenterArea2D" type="StaticBody2D" parent="Center"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center/CenterArea2D"]
 shape = SubResource("CircleShape2D_uj1bi")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Center"]
