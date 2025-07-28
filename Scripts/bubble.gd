@@ -80,6 +80,9 @@ func set_state(state: BubbleState, new_parent: Node2D):
 				freeze = false
 
 func on_collision(body: Node):
+	if is_queued_for_deletion():
+		return
+	
 	if _currentState != BubbleState.Falling:
 		return
 	
@@ -106,6 +109,10 @@ func on_collision(body: Node):
 		return
 	
 	s_graph.remove(all_matches)
+	
+	var orphans = s_graph.get_orphans()
+	for orphan in orphans:
+		(func(): orphan._bubble.set_state(BubbleState.Falling, get_tree().current_scene)).call_deferred()
 	
 	for x in all_matches:
 		x._bubble._play_effect()

@@ -1,6 +1,7 @@
 class_name BubbleGraph
 
 const CONNECT_DISTANCE_SQUARED = 90 * 90
+const CENTER_RADIUS_SQUARED = 350 * 350
 
 var _bubbles = {}
 var _graphNodes: Array[BubbleGraphNode] = []
@@ -27,7 +28,36 @@ func get_matches_of(bubble: Bubble, filter: Callable) -> Array[BubbleGraphNode]:
 	search_root.add_matches(searched, filter)
 	
 	return searched
+
+func get_orphans() -> Array[BubbleGraphNode]:
+	var result_nodes: Array[BubbleGraphNode] = []
 	
+	var groups = _get_groups_in_list(_graphNodes)
+	for group in groups:
+		var is_orphaned = not group.any(func(node): return _is_touching_center(node._bubble))
+		if is_orphaned:
+			result_nodes.append_array(group)
+	
+	return result_nodes
+
+func count_groups():
+	var groups = _get_groups_in_list(_graphNodes)
+	print(len(groups))
+
+func _get_groups_in_list(input_list: Array[BubbleGraphNode]):
+	var result_groups = []
+	var searched = []
+	
+	for node in input_list:
+		if searched.has(node):
+			continue
+		
+		var connections = get_matches_of(node._bubble, func(x): return true)
+		searched.append_array(connections)
+		
+		result_groups.append(connections)
+	
+	return result_groups
 
 func _rebuild():
 	_graphNodes.clear()
@@ -50,6 +80,8 @@ func _rebuild():
 func _are_bubbles_connected(bubble_1: Bubble, bubble_2: Bubble):
 	return bubble_1.global_position.distance_squared_to(bubble_2.global_position) < CONNECT_DISTANCE_SQUARED
 
+func _is_touching_center(bubble: Bubble):
+	return bubble.global_position.length_squared() <= CENTER_RADIUS_SQUARED
 
 class BubbleGraphNode:
 	var _bubble: Bubble
