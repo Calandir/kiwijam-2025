@@ -1,6 +1,6 @@
 class_name BubbleGraph
 
-const CONNECT_DISTANCE_SQUARED = 90 * 90
+const CONNECT_DISTANCE_SQUARED = 110 * 110
 const CENTER_RADIUS_SQUARED = 350 * 350
 
 var _bubbles = {}
