@@ -13,24 +13,20 @@ func add(bubble: Bubble):
 	_bubbles[bubble] = ""
 	_rebuild()
 
-func remove(bubbles: Array[Bubble]):
-	for bubble in bubbles:
+func remove(graph_nodes: Array[BubbleGraphNode]):
+	for node in graph_nodes:
 		#print("Remove " + str(bubble.get_instance_id()))
-		_bubbles.erase(bubble)
+		_bubbles.erase(node._bubble)
 	
 	_rebuild()
 	
-func get_matches_of(bubble: Bubble, filter: Callable) -> Array[Bubble]:
+func get_matches_of(bubble: Bubble, filter: Callable) -> Array[BubbleGraphNode]:
 	var search_root: BubbleGraphNode = _bubbles[bubble]
 	
 	var searched: Array[BubbleGraphNode] = []
 	search_root.add_matches(searched, filter)
 	
-	var results: Array[Bubble] = []
-	for result in searched:
-		results.append(result._bubble)
-	
-	return results
+	return searched
 	
 
 func _rebuild():
@@ -43,8 +39,7 @@ func _rebuild():
 		var new_graph_node = BubbleGraphNode.new(bubble)
 		
 		for graph_node in _graphNodes:
-			var is_connected: bool = graph_node._bubble.global_position.distance_squared_to(bubble.global_position) < CONNECT_DISTANCE_SQUARED
-			if is_connected:
+			if _are_bubbles_connected(bubble, graph_node._bubble):
 				var string = "Connecting %s with %s"
 				#print(string % [graph_node._bubble.get_instance_id(), bubble.get_instance_id()])
 				graph_node.connect_with_other(new_graph_node)
@@ -52,7 +47,8 @@ func _rebuild():
 		_graphNodes.append(new_graph_node)
 		_bubbles[bubble] = new_graph_node
 
-
+func _are_bubbles_connected(bubble_1: Bubble, bubble_2: Bubble):
+	return bubble_1.global_position.distance_squared_to(bubble_2.global_position) < CONNECT_DISTANCE_SQUARED
 
 
 class BubbleGraphNode:

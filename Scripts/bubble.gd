@@ -108,8 +108,8 @@ func on_collision(body: Node):
 	s_graph.remove(all_matches)
 	
 	for x in all_matches:
-		x._play_effect()
-		x.queue_free()
+		x._bubble._play_effect()
+		x._bubble.queue_free()
 
 # OLD STUFF BELOW
 
