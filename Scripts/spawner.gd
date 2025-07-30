@@ -2,18 +2,19 @@ extends Node2D
 
 @export var radius: float = 200.0
 @export var game_state: GameState
+@export var bubble_queue: BubbleQueue
 
 var _total_seconds: float = 0
 
 var _current_difficulty: int = 0
 
 var prefabs := [
-	{"scene": preload("res://Scenes/bubble_red.tscn"), "weight": 1.0, "min_difficulty": 1},
-	{"scene": preload("res://Scenes/bubble_blue.tscn"), "weight": 1.0, "min_difficulty": 1},
-	{"scene": preload("res://Scenes/bubble_green.tscn"), "weight": 1.0, "min_difficulty": 1},
-	{"scene": preload("res://Scenes/bubble_yellow.tscn"), "weight": 1.0, "min_difficulty": 1},
-	{"scene": preload("res://Scenes/bubble_purple.tscn"), "weight": 1.0, "min_difficulty": 1},
-	{"scene": preload("res://Scenes/bubble_brown.tscn"), "weight": 1.0, "min_difficulty": 1},
+	{"type": Bubble.BubbleType.Red, "scene": preload("res://Scenes/bubble_red.tscn"), "weight": 1.0, "min_difficulty": 1},
+	{"type": Bubble.BubbleType.Blue, "scene": preload("res://Scenes/bubble_blue.tscn"), "weight": 1.0, "min_difficulty": 1},
+	{"type": Bubble.BubbleType.Green, "scene": preload("res://Scenes/bubble_green.tscn"), "weight": 1.0, "min_difficulty": 1},
+	{"type": Bubble.BubbleType.Yellow, "scene": preload("res://Scenes/bubble_yellow.tscn"), "weight": 1.0, "min_difficulty": 1},
+	{"type": Bubble.BubbleType.Purple, "scene": preload("res://Scenes/bubble_purple.tscn"), "weight": 1.0, "min_difficulty": 1},
+	{"type": Bubble.BubbleType.Brown, "scene": preload("res://Scenes/bubble_brown.tscn"), "weight": 1.0, "min_difficulty": 1},
 ]
 
 const difficulty_settings := [
@@ -25,7 +26,14 @@ const difficulty_settings := [
 ]
 
 func _ready():
+	#queue_free()
 	print("Starting at difficulty 0")
+	
+	bubble_queue = get_tree().current_scene.find_child("BubbleQueue", true)
+	bubble_queue.queue.append(Bubble.BubbleType.Red)
+	bubble_queue.queue.append(Bubble.BubbleType.Red)
+	bubble_queue.queue.append(Bubble.BubbleType.Red)
+	
 	spawn_loop()
 	
 func _process(delta):
@@ -54,10 +62,14 @@ func spawn_loop() -> void:
 		spawn_loop()
 
 func spawn_prefab():
-	var prefab = pick_weighted_prefab()
-	if prefab == null:
+	var type_to_queue = pick_weighted_type()
+	if type_to_queue == null:
 		push_warning("No prefab assigned!")
 		return
+
+	var popped_type = bubble_queue.push_and_pop(type_to_queue)
+	var prefab_index = prefabs.find_custom(func(x): return x.type == popped_type)
+	var prefab = prefabs[prefab_index].scene
 
 	var angle = randf_range(0, TAU)  # TAU is 2π
 	var spawn_pos = Vector2(cos(angle), sin(angle)) * radius
@@ -65,7 +77,7 @@ func spawn_prefab():
 	instance.global_position = global_position + spawn_pos
 	get_tree().current_scene.add_child(instance)
 
-func pick_weighted_prefab() -> PackedScene:
+func pick_weighted_type() -> Bubble.BubbleType:
 	var settings = difficulty_settings[_current_difficulty]
 	var prefab_subset = prefabs.slice(0, settings.num_types)
 	
@@ -78,5 +90,6 @@ func pick_weighted_prefab() -> PackedScene:
 	for entry in prefab_subset:
 		cumulative += entry.weight
 		if r <= cumulative:
-			return entry.scene
-	return null
+			return entry.type
+	
+	return Bubble.BubbleType.Red
