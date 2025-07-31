@@ -30,9 +30,10 @@ func _ready():
 	print("Starting at difficulty 0")
 	
 	bubble_queue = get_tree().current_scene.find_child("BubbleQueue", true)
-	bubble_queue.queue.append(Bubble.BubbleType.Red)
-	bubble_queue.queue.append(Bubble.BubbleType.Red)
-	bubble_queue.queue.append(Bubble.BubbleType.Red)
+	
+	# I have no idea why but adding a spawned bubble to the scene
+	# fails unless we wait a frame first. Yuck
+	await get_tree().process_frame
 	
 	spawn_loop()
 	
@@ -67,8 +68,8 @@ func spawn_prefab():
 		push_warning("No prefab assigned!")
 		return
 
-	var popped_type = bubble_queue.push_and_pop(type_to_queue)
-	var prefab_index = prefabs.find_custom(func(x): return x.type == popped_type)
+	bubble_queue.push(type_to_queue)
+	var prefab_index = prefabs.find_custom(func(x): return x.type == type_to_queue)
 	var prefab = prefabs[prefab_index].scene
 
 	var angle = randf_range(0, TAU)  # TAU is 2π

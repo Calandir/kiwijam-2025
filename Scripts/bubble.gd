@@ -22,6 +22,7 @@ enum BubbleState { Falling, Stuck }
 var _currentState: BubbleState
 var _sfxPlayer: Node
 
+var _hasPoppedFromUIQueue: bool = false
 var _lastStateChangedFrame: int = -1
 
 var _needs_physics_reset: bool = false
@@ -48,6 +49,13 @@ func _process(delta):
 		# Limit velocity
 		if linear_velocity.length() > max_velocity:
 			linear_velocity = linear_velocity.normalized() * max_velocity
+		
+		if not _hasPoppedFromUIQueue:
+			var is_visible = global_position.x > -1200 and global_position.x < 1200	and global_position.y > -1200 and global_position.y < 1200
+			if is_visible:
+				var bubble_queue = get_tree().current_scene.find_child("BubbleQueue", true)
+				bubble_queue.pop()
+				_hasPoppedFromUIQueue = true
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _needs_physics_reset:

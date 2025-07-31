@@ -31,8 +31,15 @@ func _refresh():
 	if len(textures) == 0:
 		_load_children()
 	
-	for i in range(len(queue)):
-		textures[i].texture = textures_dict[queue[i]]
+	for i in range(len(textures)):
+		var texture_rect = textures[i]
+		if i >= len(queue):
+			texture_rect.visible = false
+			continue
+		texture_rect.visible = true
+		
+		texture_rect.texture = textures_dict[queue[i]]
+		
 
 func _load_children():
 	var children = get_children()
