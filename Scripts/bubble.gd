@@ -51,7 +51,10 @@ func _process(delta):
 			linear_velocity = linear_velocity.normalized() * max_velocity
 		
 		if not _hasPoppedFromUIQueue:
-			var is_visible = global_position.x > -1200 and global_position.x < 1200	and global_position.y > -1200 and global_position.y < 1200
+			var distance = 1150
+			#var is_visible = global_position.x > -distance and global_position.x < distance	and global_position.y > -distance and global_position.y < distance
+			# Seems to feel better with constant distance even though the bubble is visible sooner in the corner
+			var is_visible = global_position.length_squared() < distance * distance
 			if is_visible:
 				var bubble_queue = get_tree().current_scene.find_child("BubbleQueue", true)
 				bubble_queue.pop()
