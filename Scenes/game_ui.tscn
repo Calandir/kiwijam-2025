@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpsq5vg6b7bf3"]
+[gd_scene load_steps=9 format=3 uid="uid://dpsq5vg6b7bf3"]
 
+[ext_resource type="Shader" uid="uid://cqbba0uvbmar" path="res://Shaders/gradient2.gdshader" id="1_1t2s1"]
 [ext_resource type="PackedScene" uid="uid://bcsp6orf414ma" path="res://Scenes/quit_to_title.tscn" id="1_xjnnq"]
 [ext_resource type="FontFile" uid="uid://clcsxsgj4qspl" path="res://Fonts/POORICH.TTF" id="2_bw2rt"]
 [ext_resource type="Script" uid="uid://d24hr5t1vmtre" path="res://Scripts/score_label.gd" id="2_xjnnq"]
 [ext_resource type="Script" uid="uid://bg3rhd6x7g26v" path="res://Scripts/bubble_queue.gd" id="4_gjn1n"]
 [ext_resource type="Texture2D" uid="uid://b7kcl51tv0b8a" path="res://Art/orb1.png" id="4_x63ue"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1t2s1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1t2s1"]
+shader = ExtResource("1_1t2s1")
+shader_parameter/start_color = Color(1, 1, 1, 0.172549)
+shader_parameter/end_color = Color(1, 1, 1, 0)
+shader_parameter/gradient_start = 0.592
+shader_parameter/gradient_end = 1.0
 
 [node name="GameUIRoot" type="Node2D"]
 
@@ -47,32 +57,41 @@ text = "Score: 999"
 horizontal_alignment = 2
 script = ExtResource("2_xjnnq")
 
-[node name="BubbleQueue" type="HBoxContainer" parent="CanvasLayer/Scaler"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Scaler"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -48.0
+offset_left = -152.0
 offset_top = -48.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1t2s1")
+
+[node name="Backing" type="ColorRect" parent="CanvasLayer/Scaler/PanelContainer"]
+material = SubResource("ShaderMaterial_1t2s1")
+layout_mode = 2
+
+[node name="BubbleQueue" type="HBoxContainer" parent="CanvasLayer/Scaler/PanelContainer"]
+layout_direction = 3
+layout_mode = 2
 script = ExtResource("4_gjn1n")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Scaler/BubbleQueue"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Scaler/PanelContainer/BubbleQueue"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("4_x63ue")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Scaler/BubbleQueue"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Scaler/PanelContainer/BubbleQueue"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("4_x63ue")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Scaler/BubbleQueue"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Scaler/PanelContainer/BubbleQueue"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("4_x63ue")

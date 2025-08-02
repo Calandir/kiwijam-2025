@@ -31,6 +31,8 @@ func _refresh():
 	if len(textures) == 0:
 		_load_children()
 	
+	# Note that items are then displayed right-to-left
+	# So the queue pops from the right side
 	for i in range(len(textures)):
 		var texture_rect = textures[i]
 		if i >= len(queue):
