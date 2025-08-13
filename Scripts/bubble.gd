@@ -29,6 +29,8 @@ var _needs_physics_reset: bool = false
 
 static var s_graph: BubbleGraph = BubbleGraph.new()
 static var s_center: Node2D
+static var s_indicator_pool: IndicatorPool
+var _indicator: Indicator
 
 func _ready():
 	body_entered.connect(on_collision)
@@ -36,6 +38,12 @@ func _ready():
 	
 	if not s_center:
 		s_center = get_tree().current_scene.find_child("Center", true)
+	
+	if not s_indicator_pool:
+		s_indicator_pool = get_tree().current_scene.find_child("IndicatorPool", true)
+	
+	_indicator = s_indicator_pool.get_indicator()
+	_indicator.set_bubble(self)
 	
 	set_state(BubbleState.Falling, null)
 
@@ -59,6 +67,7 @@ func _process(delta):
 				var bubble_queue = get_tree().current_scene.find_child("BubbleQueue", true)
 				bubble_queue.pop()
 				_hasPoppedFromUIQueue = true
+				s_indicator_pool.return_indicator(_indicator)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _needs_physics_reset:

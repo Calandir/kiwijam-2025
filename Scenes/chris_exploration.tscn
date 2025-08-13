@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xto32kijwviv"]
+[gd_scene load_steps=15 format=3 uid="uid://xto32kijwviv"]
 
 [ext_resource type="Script" uid="uid://dc1bhhjiyn1fs" path="res://Scripts/game_state.gd" id="1_essuw"]
 [ext_resource type="Texture2D" uid="uid://dfeaiqdrbwfej" path="res://Art/player.png" id="1_fj1i6"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://k5vvnewcxddd" path="res://Scenes/game_over_root.tscn" id="7_uj86v"]
 [ext_resource type="PackedScene" uid="uid://b8jfnc0klgfw4" path="res://Scenes/sfx_player.tscn" id="9_5i8yc"]
 [ext_resource type="PackedScene" uid="uid://dpsq5vg6b7bf3" path="res://Scenes/game_ui.tscn" id="11_flaj5"]
+[ext_resource type="Script" uid="uid://5hjvfh1y67d6" path="res://Scenes/indicator_pool.gd" id="11_qli0q"]
+[ext_resource type="PackedScene" uid="uid://b3l7c7tp01gw3" path="res://Scenes/indicator.tscn" id="13_7dmr0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj1bi"]
 radius = 306.163
@@ -59,3 +61,7 @@ game_state = NodePath("../GameState")
 [node name="SFXPlayer" parent="." instance=ExtResource("9_5i8yc")]
 
 [node name="GameUIRoot" parent="." instance=ExtResource("11_flaj5")]
+
+[node name="IndicatorPool" type="Node2D" parent="."]
+script = ExtResource("11_qli0q")
+_indicator_scene = ExtResource("13_7dmr0")
