@@ -43,7 +43,7 @@ texture = ExtResource("1_fj1i6")
 
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("game_state")]
 script = ExtResource("4_y1jy2")
-radius = 1500.0
+radius = 2000.0
 game_state = NodePath("../GameState")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
